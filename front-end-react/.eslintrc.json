@@ -14,7 +14,7 @@
     "requireConfigFile": false
   },
   "extends": ["airbnb", "plugin:react/recommended", "plugin:react-hooks/recommended"],
-  "plugins": ["react", "js", "jsx"],
+  "plugins": ["react", "jsx"],
   "rules": {
     "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
     "react/react-in-jsx-scope": "off",
