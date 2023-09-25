@@ -22,7 +22,7 @@ jobs:
       - name: Navigate The right Repo
         run: cd front-end-react/ && pwd
       - name: ESLint Report
-        run: pwd && npx eslint "**/*.{js,jsx}"
+        run: cd front-end-react/ && pwd && npx eslint "**/*.{js,jsx}"
   stylelint:
     name: Stylelint
     runs-on: ubuntu-22.04
