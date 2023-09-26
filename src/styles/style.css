@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 body {
-  margin: 0;
   font-family: poppins, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -24,8 +23,6 @@ code {
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
@@ -148,6 +145,7 @@ label{
   padding: 0.25rem;
   font-size: 1rem;
   cursor: pointer;
+    color: #000;
 }
 
 .password-input {
@@ -172,6 +170,6 @@ label{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    min-height: 100vh;
     width: 100%;
+    margin: 0;
 }

@@ -6,28 +6,23 @@ import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
 import WelcomePage from './pages/WelcomePage';
 import Loader from './components/loader/Loader';
-import NavigationPanel from './components/NavigationPanel';
-
-function Layout() {
-  return (
-    <>
-      <NavigationPanel />
-      <Outlet />
-    </>
-  );
-}
+import Layout from './components/Layout';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/welcome" element={<WelcomePage />} />
-        <Route path="/SignUP" element={<SignUp />} />
-        <Route path="/LogIn" element={<LogIn />} />
-        <Route path="/Loader" element={<Loader />} />
         <Route path="/" element={<Layout />}>
-          <Route index element={<div className="text-center">Welcome Car Rentals</div>} />
+          <Route path="/" element={<WelcomePage />} />
+          <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/LogIn" element={<LogIn />} />
         </Route>
+        <Route path="/Loader" element={<Loader />} />
+        <Route path="/LogIn" element={<LogIn />} />
+        <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/WelcomePage" element={<WelcomePage />} />
+        <Route path="/Layout" element={<Layout />} />
+        <Route path="/Outlet" element={<Outlet />} />
       </Routes>
     </Router>
   );
