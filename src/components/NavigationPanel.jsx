@@ -33,7 +33,7 @@ function NavigationPanel() {
               <li className="mx-3 md:mx-[3px]"><NavLink onClick={() => setMenu(false)} to="/"><BiLogoInstagram /></NavLink></li>
               <li className="mx-3 md:mx-[3px]"><NavLink onClick={() => setMenu(false)} to="/"><BiLogoPinterestAlt /></NavLink></li>
             </ul>
-            <p className="text-[8px] mx-0 text-center mb-3">@ 2015 PLAGGIO & CSPA - PIVA</p>
+            <p className="text-[8px] mx-0 text-center mb-3">@ 2023 PLAGGIO & CSPA - PIVA</p>
           </div>
         </div>
       </nav>
