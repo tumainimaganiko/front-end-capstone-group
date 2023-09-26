@@ -18,7 +18,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<div className="text-center">dksbfe</div>} />
+        <Route index element={<div className="text-center">Welcome Car Rentals</div>} />
       </Route>
     </Routes>
   );

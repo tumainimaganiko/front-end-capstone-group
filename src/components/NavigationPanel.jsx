@@ -10,7 +10,7 @@ function NavigationPanel() {
   const [menu, setMenu] = useState(false);
   return (
     <>
-      <button type="button" className="fixed top-5 left-5" onClick={() => setMenu(true)}>
+      <button type="button" className="md:fixed top-5 left-5" onClick={() => setMenu(true)}>
         <HiMenuAlt4 className="text-[34px]" />
       </button>
       {menu && (
