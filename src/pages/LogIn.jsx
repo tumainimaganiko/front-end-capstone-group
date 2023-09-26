@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { storeSession } from '../util/auth';
 import axios from '../api/axios';
+import '../styles/style.css';
 
 const LOGIN_URL = '/auth';
 
