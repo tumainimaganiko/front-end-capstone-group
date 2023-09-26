@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  BrowserRouter as Router, Route, Routes, Outlet,
+  Route, Routes, Outlet,
 } from 'react-router-dom';
 import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
@@ -19,17 +19,14 @@ function Layout() {
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/welcome" element={<WelcomePage />} />
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<WelcomePage />} />
         <Route path="/SignUP" element={<SignUp />} />
         <Route path="/LogIn" element={<LogIn />} />
         <Route path="/Loader" element={<Loader />} />
-        <Route path="/" element={<Layout />}>
-          <Route index element={<div className="text-center">Welcome Car Rentals</div>} />
-        </Route>
-      </Routes>
-    </Router>
+      </Route>
+    </Routes>
   );
 }
 
