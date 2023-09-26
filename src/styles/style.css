@@ -31,8 +31,9 @@ code {
 
 html {
   font-family: "Nunito", sans-serif;
-  font-size: 22px;
-  color: #191616;
+
+  /* font-size: 22px;
+  color: #191616; */
 }
 
 .App {
@@ -71,7 +72,7 @@ form {
 
 a,
 a:visited {
-  color: #fff;
+  /* color: #fff; */
 }
 
 input[type="text"],
@@ -102,8 +103,8 @@ button {
 }
 
 .active {
-  background-color: #51b318;
-  color: #fff;
+  /* background-color: #51b318;
+  color: #fff; */
 }
 
 .innactive {
