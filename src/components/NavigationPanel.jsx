@@ -27,7 +27,7 @@ function NavigationPanel() {
       {menu && (
       <nav ref={navbarRef} className="flex flex-col border-r bg-white text-center md:text-left border-white md:w-[16%] lg:w-[12%] fixed md:absolute top-0 left-0 bottom-0 right-0">
         <button type="button" onClick={removeNavPanel}>
-          <HiXMark />
+          <HiXMark className="text-[30px]" />
         </button>
         <img className=" w-1/2 h-1/5 block mx-auto" src={logo} alt="car logo" />
         <div className="flex flex-col w-full h-4/5 absolute md:left-0 bottom-0 md:pl-3 justify-between">
