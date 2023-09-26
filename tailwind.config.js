@@ -11,6 +11,7 @@ module.exports = {
       colors: {
         primary: '#97BF11',
         secondary: '#49a92780',
+        innactiveBtn: '#5b5d5b80',
       },
     },
   },

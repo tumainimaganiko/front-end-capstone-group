@@ -40,7 +40,7 @@ html {
   text-align: center;
 }
 
-section {
+.log-section {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -72,7 +72,6 @@ a:visited {
 input[type="text"],
 input[type="email"],
 input[type="password"],
-button,
 textarea {
   font-family: "Courier New", sans-serif;
   font-size: 22px;
@@ -87,24 +86,8 @@ label {
   align-items: center;
 }
 
-label,
-button {
+label{
   margin-top: 0.5rem;
-}
-
-button {
-  padding: 0.25rem;
-}
-
-.active {
-  background-color: #51b318;
-  color: #fff;
-}
-
-.innactive {
-  background-color: #5b5d5b80;
-  color: #fff;
-  cursor: not-allowed;
 }
 
 .instructions {
@@ -155,7 +138,6 @@ button {
 
 .button {
   background-color: #51b318;
-  color: #fff;
   border: none;
   border-radius: 0.5rem;
   padding: 0.25rem;
@@ -178,4 +160,13 @@ button {
   padding: 0.25rem;
   font-size: 1rem;
   cursor: pointer;
+}
+
+.welcome {
+    background-image: url('../images/bg-merc.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    width: 100%;
 }

@@ -68,7 +68,7 @@ function Login() {
         </p>
       </section>
     ) : (
-      <section>
+      <section className="log-section">
         <p
           ref={errRef}
           className={errMsg ? 'errmsg' : 'offscreen'}
@@ -76,7 +76,7 @@ function Login() {
         >
           {errMsg}
         </p>
-        <h1>Sign In</h1>
+        <h1 className="text-xl">Sign In</h1>
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="email">Email:</label>
@@ -113,13 +113,13 @@ function Login() {
               {showPwd ? <FaEye /> : <FaEyeSlash />}
             </div>
           </div>
-          <button type="submit" className={`${email && pwd ? 'active' : 'innactive'}`}>Sign In</button>
+          <button type="submit" className={`${email && pwd ? 'bg-primary text-yellow-50 mt-3 rounded-lg mx-1' : 'bg-innactiveBtn mt-3 text-yellow-50  rounded-lg mx-1'}`}>Sign In</button>
 
         </form>
         <p>
           Need an Account?
           <br />
-          <span className="line">
+          <span className="line bg-secondary px-2 rounded-lg">
             {/* put router link here */}
             <a href="/">Sign Up</a>
           </span>
