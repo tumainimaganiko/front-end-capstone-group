@@ -66,11 +66,6 @@ form {
   padding-bottom: 1rem;
 }
 
-a,
-a:visited {
-  color: #fff;
-}
-
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -86,9 +81,6 @@ label {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-}
-
-label{
   margin-top: 0.5rem;
 }
 
@@ -145,7 +137,7 @@ label{
   padding: 0.25rem;
   font-size: 1rem;
   cursor: pointer;
-    color: #000;
+  color: #000;
 }
 
 .password-input {
@@ -166,10 +158,10 @@ label{
 }
 
 .welcome {
-    background-image: url('../images/bg-merc.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    margin: 0;
+  background-image: url('../images/bg-merc.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  margin: 0;
 }
