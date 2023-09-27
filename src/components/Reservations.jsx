@@ -25,6 +25,19 @@ const Reservations = () => {
     </option>
   ));
 
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      createReservation(state),
+      setState({
+        username: '',
+        carBrand: '',
+        city: '',
+        date: '',
+      }),
+    );
+  };
+
   return (
     <section>
       <h2>RESERVE A CAR TEST-RIDE</h2>
