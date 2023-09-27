@@ -1,23 +1,25 @@
-import React, { useState } from 'react'
-import { v4 as uuidv4 } from 'uuid';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
 
 const Reservations = () => {
+  const [state, setState] = useState({
+    username: "",
+    carBrand: "",
+    city: "",
+    date: "",
+  });
 
-    const [state, setState] = useState({
-        username: '',
-        carBrand: '',
-        city: '',
-        date: '',
-      });
+  const dispatch = useDispatch();
 
-      const handleChange = (e) => {
-        setState({
-          ...state,
-          [e.target.name]: e.target.value,
-        });
-      };
+  const handleChange = (e) => {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-      const carBrands = ['Mercedes', 'BMW', 'Maserati', 'Infinity', 'Audi'];
+  const carBrands = ["Mercedes", "BMW", "Maserati", "Infinity", "Audi"];
 
   const carBrandOptions = carBrands.map((carBrand) => (
     <option value={carBrand} key={uuidv4()}>
@@ -30,11 +32,11 @@ const Reservations = () => {
     dispatch(
       createReservation(state),
       setState({
-        username: '',
-        carBrand: '',
-        city: '',
-        date: '',
-      }),
+        username: "",
+        carBrand: "",
+        city: "",
+        date: "",
+      })
     );
   };
 
@@ -75,7 +77,7 @@ const Reservations = () => {
           Car brand:
           <select
             name="carBrand"
-            id='input-car'
+            id="input-car"
             value={state.carBrand}
             onChange={handleChange}
           >
@@ -98,7 +100,7 @@ const Reservations = () => {
         <button type="submit">RESERVE NOW</button>
       </form>
     </section>
-  )
-}
+  );
+};
 
-export default Reservations
+export default Reservations;
