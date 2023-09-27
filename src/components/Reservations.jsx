@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { v4 as uuidv4 } from "uuid";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+import { createReservation } from '../redux/reservations/reservationSlice';
 
-const Reservations = () => {
+function Reservations() {
   const [state, setState] = useState({
-    username: "",
-    carBrand: "",
-    city: "",
-    date: "",
+    username: '',
+    carBrand: '',
+    city: '',
+    date: '',
   });
 
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const Reservations = () => {
     });
   };
 
-  const carBrands = ["Mercedes", "BMW", "Maserati", "Infinity", "Audi"];
+  const carBrands = ['Mercedes', 'BMW', 'Maserati', 'Infinity', 'Audi'];
 
   const carBrandOptions = carBrands.map((carBrand) => (
     <option value={carBrand} key={uuidv4()}>
@@ -32,11 +33,11 @@ const Reservations = () => {
     dispatch(
       createReservation(state),
       setState({
-        username: "",
-        carBrand: "",
-        city: "",
-        date: "",
-      })
+        username: '',
+        carBrand: '',
+        city: '',
+        date: '',
+      }),
     );
   };
 
@@ -101,6 +102,6 @@ const Reservations = () => {
       </form>
     </section>
   );
-};
+}
 
 export default Reservations;
