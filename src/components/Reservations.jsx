@@ -50,7 +50,7 @@ const Reservations = () => {
         London Book Now
       </p>
 
-      <form>
+      <form onSubmit={handleFormSubmit}>
         <label htmlFor="input-name">
           Username:
           <input
