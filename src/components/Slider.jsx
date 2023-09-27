@@ -21,20 +21,34 @@ function Slider() {
     setCurrentIndex((prevIndex) => (prevIndex === cars.length - 1 ? 0 : prevIndex + 1));
   };
 
+  const visibleCars = [];
+  if (window.innerWidth < 640) {
+    visibleCars.push(cars[currentIndex]);
+  } else {
+    const firstIndex = currentIndex === 0 ? cars.length - 1 : currentIndex - 1;
+    let secondIndex;
+    if (currentIndex === 0) {
+      secondIndex = cars.length - 2;
+    } else if (currentIndex === 1) {
+      secondIndex = cars.length - 1;
+    } else {
+      secondIndex = currentIndex - 2;
+    }
+    visibleCars.push(cars[firstIndex], cars[secondIndex], cars[currentIndex]);
+  }
+
   return (
-    <div className="relative">
+    <div className="relative flex justify-center">
       <div className="overflow-hidden">
         <div className="flex">
-          {cars.map((car) => (
+          {visibleCars.map((car) => (
             <div
               key={car.id}
-              className={`${
-                currentIndex === car.id - 1 ? 'opacity-100' : 'opacity-50'
-              } transition-opacity duration-1000 w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5`}
+              className="transition-opacity duration-1000 w-full sm:w-1/2 md:w-1/3"
             >
               <div className="flex flex-col items-center p-4">
                 <img
-                  className=" mb-4"
+                  className="mb-4"
                   src={car.image}
                   alt="car"
                 />
