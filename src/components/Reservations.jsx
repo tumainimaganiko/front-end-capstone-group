@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid';
 
 const Reservations = () => {
 
@@ -15,6 +16,14 @@ const Reservations = () => {
           [e.target.name]: e.target.value,
         });
       };
+
+      const carBrands = ['Mercedes', 'BMW', 'Maserati', 'Infinity', 'Audi'];
+
+  const carBrandOptions = carBrands.map((carBrand) => (
+    <option value={carBrand} key={uuidv4()}>
+      {carBrand}
+    </option>
+  ));
 
   return (
     <section>
