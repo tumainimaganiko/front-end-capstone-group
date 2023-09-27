@@ -27,6 +27,40 @@ const Reservations = () => {
         test-ride is available in your area, please use the selector below.
         London Book Now
       </p>
+
+      <form>
+        <label htmlFor="input-name">
+          Username:
+          <input
+            type="text"
+            id="input-name"
+            name="username"
+            value={state.username}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="input-city">
+          city:
+          <input
+            type="text"
+            id="input-city"
+            name="city"
+            value={state.city}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="input-date">
+          Date and Time:
+          <input
+            type="date"
+            id="input-date"
+            name="date"
+            value={state.date}
+            onChange={handleChange}
+          />
+        </label>
+        <button type="submit">RESERVE NOW</button>
+      </form>
     </section>
   )
 }
