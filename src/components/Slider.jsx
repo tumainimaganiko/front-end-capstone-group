@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
@@ -6,27 +6,43 @@ import { fetchCars } from '../redux/cars/carsSlice';
 
 function Slider() {
   const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [hoveredIndex, setHoveredIndex] = React.useState(null);
+  const intervalRef = useRef(null);
   const dispatch = useDispatch();
   const cars = useSelector((state) => state.cars.cars);
 
   useEffect(() => {
     dispatch(fetchCars());
 
-    const intervalId = setInterval(() => {
+    intervalRef.current = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex === cars.length - 1 ? 0 : prevIndex + 1));
     }, 3500);
 
     return () => {
-      clearInterval(intervalId);
+      clearInterval(intervalRef.current);
     };
   }, [dispatch, cars.length]);
 
+  const resetInterval = () => {
+    clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex === cars.length - 1 ? 0 : prevIndex + 1));
+    }, 3500);
+  };
+
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? cars.length - 1 : prevIndex - 1));
+    resetInterval();
   };
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex === cars.length - 1 ? 0 : prevIndex + 1));
+    resetInterval();
+  };
+
+  const handleCarHover = (index) => {
+    setHoveredIndex(index);
+    resetInterval();
   };
 
   const visibleCars = [];
@@ -49,21 +65,30 @@ function Slider() {
     <div className="relative flex justify-center">
       <div className="overflow-hidden">
         <div className="flex">
-          {visibleCars.map((car) => (
+          {visibleCars.map((car, index) => (
             <div
               key={car.id}
-              className="transition-opacity duration-1000 w-full sm:w-1/2 md:w-1/3"
+              className={`transition-opacity duration-1000 w-full sm:w-1/2 md:w-1/3 ${
+                hoveredIndex === index ? 'hover:scale-105' : ''
+              }`}
+              onMouseEnter={() => handleCarHover(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="flex flex-col items-center p-4">
-                <img className="mb-4" src={car.image} alt="car" />
-                <h2 className="text-lg font-semibold mb-2">{car.name}</h2>
-                <Link
-                  to="/"
-                  className="bg-primary px-3 py-1 my-4 rounded hover:bg-lime-400 text-white"
-                >
-                  Book Now
-                </Link>
-              </div>
+              <Link
+                to={`/cars/${car.id}`}
+                className="block"
+              >
+                <div className="flex flex-col items-center p-4">
+                  <img className="mb-4" src={car.image} alt="car" />
+                  <h2 className="text-lg font-semibold mb-2">{car.name}</h2>
+                  <Link
+                    to="/"
+                    className="bg-primary px-3 py-1 my-4 rounded hover:bg-lime-400 text-white"
+                  >
+                    Book Now
+                  </Link>
+                </div>
+              </Link>
             </div>
           ))}
         </div>
