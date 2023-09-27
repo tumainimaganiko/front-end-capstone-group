@@ -7,13 +7,15 @@ import LogIn from './pages/LogIn';
 import WelcomePage from './pages/WelcomePage';
 import Loader from './components/loader/Loader';
 import Layout from './components/Layout';
+import Reservations from './components/Reservations';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<WelcomePage />} />
+          <Route index element={<Reservations />} />
+          <Route path="/WelcomePage" element={<WelcomePage />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/LogIn" element={<LogIn />} />
           <Route path="/Loader" element={<Loader />} />
