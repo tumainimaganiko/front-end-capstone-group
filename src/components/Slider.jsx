@@ -11,7 +11,15 @@ function Slider() {
 
   useEffect(() => {
     dispatch(fetchCars());
-  }, [dispatch]);
+
+    const intervalId = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex === cars.length - 1 ? 0 : prevIndex + 1));
+    }, 3500);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [dispatch, cars.length]);
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? cars.length - 1 : prevIndex - 1));
@@ -47,11 +55,7 @@ function Slider() {
               className="transition-opacity duration-1000 w-full sm:w-1/2 md:w-1/3"
             >
               <div className="flex flex-col items-center p-4">
-                <img
-                  className="mb-4"
-                  src={car.image}
-                  alt="car"
-                />
+                <img className="mb-4" src={car.image} alt="car" />
                 <h2 className="text-lg font-semibold mb-2">{car.name}</h2>
                 <Link
                   to="/"
