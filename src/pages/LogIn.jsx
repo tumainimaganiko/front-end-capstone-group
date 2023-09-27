@@ -121,7 +121,7 @@ function Login() {
           <br />
           <span className="line bg-secondary px-2 rounded-lg">
             {/* put router link here */}
-            <a href="/">Sign Up</a>
+            <a href="/SignUp">Sign Up</a>
           </span>
         </p>
       </section>

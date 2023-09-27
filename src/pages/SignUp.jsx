@@ -284,7 +284,7 @@ function SignUp() {
       <p>
         Already registered?
         <br />
-        <span className="line">
+        <span className="line  bg-secondary px-2 rounded-lg">
           {/* put router link here */}
           <a href="/LogIn">Sign In</a>
         </span>
