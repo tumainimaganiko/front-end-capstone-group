@@ -112,7 +112,7 @@ function SignUp() {
       </p>
     </section>
   ) : (
-    <section>
+    <section className="log-section">
       <p
         ref={errRef}
         className={errMsg ? 'errmsg' : 'offscreen'}
@@ -120,7 +120,7 @@ function SignUp() {
       >
         {errMsg}
       </p>
-      <h1>Register</h1>
+      <h1 className="text-xl">Register</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">
           Username:
@@ -275,7 +275,7 @@ function SignUp() {
           type="submit"
           disabled={!!(!validName || !validPwd || !validMatch)}
           className={
-            validName && validPwd && validMatch ? 'active' : 'innactive'
+            validName && validPwd && validMatch ? 'bg-primary text-yellow-50 mt-3 rounded-lg mx-1 ' : 'bg-innactiveBtn mt-3 mx-1 text-yellow-50  rounded-lg'
           }
         >
           Sign Up
@@ -284,7 +284,7 @@ function SignUp() {
       <p>
         Already registered?
         <br />
-        <span className="line">
+        <span className="line  bg-secondary px-2 rounded-lg">
           {/* put router link here */}
           <a href="/LogIn">Sign In</a>
         </span>
