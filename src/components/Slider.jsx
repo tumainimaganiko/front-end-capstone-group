@@ -64,11 +64,11 @@ function Slider() {
   return (
     <div className="relative flex justify-center">
       <div className="overflow-hidden">
-        <div className="flex">
+        <div className="flex border m-3">
           {visibleCars.map((car, index) => (
             <div
               key={car.id}
-              className={`transition-opacity duration-1000 w-full sm:w-1/2 md:w-1/3 ${
+              className={`transition-opacity duration-1000 m-3 w-full sm:w-1/2 md:w-1/3 ${
                 hoveredIndex === index ? 'hover:scale-105' : ''
               }`}
               onMouseEnter={() => handleCarHover(index)}
@@ -79,6 +79,10 @@ function Slider() {
                 className="block"
               >
                 <div className="flex flex-col items-center p-4">
+                  <span>
+                    <span className="text-2xl font-semibold">{car.price}</span>
+                    <span className="text-sm">99$/day</span>
+                  </span>
                   <img className="mb-4" src={car.image} alt="car" />
                   <h2 className="text-lg font-semibold mb-2">{car.name}</h2>
                   <Link
@@ -97,7 +101,7 @@ function Slider() {
         <button
           type="button"
           onClick={handlePrev}
-          className="bg-gray-200 text-primary hover:bg-gray-300 rounded-full p-2"
+          className="bg-primary text-gray-200 hover:bg-lime-300 rounded-e-full md:ps-6 p-1"
         >
           <FaChevronLeft className="h-4 w-4" />
         </button>
@@ -106,7 +110,7 @@ function Slider() {
         <button
           type="button"
           onClick={handleNext}
-          className="bg-gray-200 text-primary hover:bg-gray-300 rounded-full p-2"
+          className="bg-primary text-gray-200 hover:bg-lime-300 rounded-s-full p-1 md:pe-6"
         >
           <FaChevronRight className="h-4 w-4" />
         </button>
