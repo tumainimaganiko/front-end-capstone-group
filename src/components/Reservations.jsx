@@ -58,6 +58,20 @@ const Reservations = () => {
             onChange={handleChange}
           />
         </label>
+        <label htmlFor="input-car">
+          Car brand:
+          <select
+            name="carBrand"
+            id='input-car'
+            value={state.carBrand}
+            onChange={handleChange}
+          >
+            <option value="" disabled>
+              --Pick a car brand--
+            </option>
+            {carBrandOptions}
+          </select>
+        </label>
         <label htmlFor="input-date">
           Date and Time:
           <input
