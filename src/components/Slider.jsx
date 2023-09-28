@@ -81,7 +81,7 @@ function Slider() {
                 <div className="flex flex-col items-center p-4">
                   <span>
                     <span className="text-2xl font-semibold">{car.price}</span>
-                    <span className="text-sm">99$/day</span>
+                    <span className="text-sm">/day</span>
                   </span>
                   <img className="mb-4" src={car.image} alt="car" />
                   <h2 className="text-lg font-semibold mb-2">{car.name}</h2>
