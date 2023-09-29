@@ -14,7 +14,7 @@ import '../styles/style.css';
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const EMAIL_REGEX = /^[A-z0-9-_]+@[A-z0-9-_]+\.[A-z0-9-_]+$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = '/register';
+const REGISTER_URL = 'https://car-rental-api-91yl.onrender.com/api/v1/users';
 
 function SignUp() {
   const userRef = useRef();
@@ -80,9 +80,9 @@ function SignUp() {
           withCredentials: true,
         },
       );
-      // console.log(response?.data);
-      // console.log(response?.accessToken);
-      // console.log(JSON.stringify(response));
+      console.log(response?.data);
+      console.log(response?.accessToken);
+      console.log(JSON.stringify(response));
       setSuccess(true);
       // clear state and controlled inputs
       // need value attrib on inputs for this

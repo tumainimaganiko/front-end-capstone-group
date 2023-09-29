@@ -5,7 +5,7 @@ import { storeSession } from '../util/auth';
 import axios from '../api/axios';
 import '../styles/style.css';
 
-const LOGIN_URL = '/auth';
+const LOGIN_URL = 'https://car-rental-api-91yl.onrender.com/users/tokens/sign_in';
 
 function Login() {
   const emailref = useRef();
