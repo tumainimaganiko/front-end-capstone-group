@@ -86,10 +86,10 @@ function Slider() {
                   <img className="mb-4" src={car.image} alt="car" />
                   <h2 className="text-lg font-semibold mb-2">{car.name}</h2>
                   <Link
-                    to="/"
+                    to={`/cars/${car.id}`}
                     className="bg-primary px-3 py-1 my-4 rounded hover:bg-lime-400 text-white"
                   >
-                    Book Now
+                    Details
                   </Link>
                 </div>
               </Link>
