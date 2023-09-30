@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {
   faCheck,
   faTimes,
@@ -70,6 +71,22 @@ function SignUp() {
     setErrMsg('');
   }, [user, pwd, matchPwd]);
 
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    phone: '',
+  });
+
+  useEffect(() => {
+    setFormData({
+      name: user,
+      phone_number: phone,
+      email,
+      password: pwd,
+    });
+  }, [user, email, pwd, phone]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     // if button enabled with JS hack
@@ -82,16 +99,7 @@ function SignUp() {
       return;
     }
     try {
-      const response = await axios.post(
-        REGISTER_URL,
-        JSON.stringify({
-          user, pwd, email, phone,
-        }),
-        {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true,
-        },
-      );
+      const response = await axios.post(REGISTER_URL, formData);
       // console.log(response?.data);
       // console.log(response?.accessToken);
       // console.log(JSON.stringify(response));
@@ -104,7 +112,7 @@ function SignUp() {
       setPwd('');
       setMatchPwd('');
       // store session
-      storeSession(response?.data);
+      storeSession(response?.data.resource_owner, response?.data.token);
     } catch (err) {
       if (!err?.response) {
         setErrMsg('No Server Response');
@@ -119,10 +127,8 @@ function SignUp() {
 
   return success ? (
     <section>
-      <h1>Success!</h1>
-      <p>
-        <a href="./LogIn">Log In</a>
-      </p>
+      <h1>You are registered!</h1>
+      <Link to="/LogIn">Sign In</Link>
     </section>
   ) : (
     <section className="log-section">
