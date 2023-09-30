@@ -66,10 +66,10 @@ function AddReservations() {
   };
 
   return (
-    <section className="bg-[#95BF02] h-full m-0 md:fixed text-white">
+    <section className="bg-[#95BF02] fixed top-0 bottom-0 left-0 right-0 text-white">
       <div className="p-5 text-justify md:mx-auto md:w-1/2 md:my-[10%]">
         <h2 className="text-center font-bold">RESERVE A CAR TEST-RIDE</h2>
-        <p className="my-2 text-[9px] text-center">
+        <p className="my-2 text-[9px] md:text-center">
           There are 34 different versions of the Vespa. Today five series are in
           production: the classic manual transmission PX and the modern CVT
           transmission S: LX. GT, and GTS: We have showrooms all over the globe
@@ -78,7 +78,7 @@ function AddReservations() {
           London Book Now
         </p>
 
-        <form onSubmit={handleFormSubmit} className="grid grid-cols-2 gap-3">
+        <form onSubmit={handleFormSubmit} className="md:grid grid-cols-2 gap-3">
           <select
             name="city"
             id="input-car"
