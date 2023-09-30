@@ -8,6 +8,7 @@ import WelcomePage from './pages/WelcomePage';
 import Loader from './components/loader/Loader';
 import Layout from './components/Layout';
 import AddReservations from './components/AddReservations';
+import Cars from './pages/Cars';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/LogIn" element={<LogIn />} />
           <Route path="/Loader" element={<Loader />} />
+          <Route path="/Cars" element={<Cars />} />
         </Route>
       </Routes>
     </Router>
