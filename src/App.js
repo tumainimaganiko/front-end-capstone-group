@@ -16,9 +16,9 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<AddReservations />} />
-          <Route path="/reservations" element={<Reservations />} />
-          <Route path="/WelcomePage" element={<WelcomePage />} />
+          <Route path="/reservations" element={<AddReservations />} />
+          <Route path="/my-reservations" element={<Reservations />} />
+          <Route index element={<WelcomePage />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/LogIn" element={<LogIn />} />
           <Route path="/Loader" element={<Loader />} />
