@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchReservations } from "../redux/reservations/reservationSlice";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchReservations } from '../redux/reservations/reservationSlice';
 
 function Reservations() {
   const { reservations } = useSelector((store) => store.reservations);
