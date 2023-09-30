@@ -7,7 +7,7 @@ import { fetchCars } from '../redux/cars/carsSlice';
 
 function AddReservations() {
   const [state, setState] = useState({
-    user: getUser.id,
+    user: getUser,
     carId: '',
     city: '',
     rentDate: '',
@@ -79,17 +79,6 @@ function AddReservations() {
         </p>
 
         <form onSubmit={handleFormSubmit}>
-          <label htmlFor="input-name">
-            <input
-              type="text"
-              id="input-name"
-              name="username"
-              value={state.username}
-              onChange={handleChange}
-              placeholder="Username"
-            />
-          </label>
-
           <label htmlFor="input-car">
             <select
               name="city"
