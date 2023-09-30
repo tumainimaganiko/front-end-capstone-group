@@ -21,6 +21,7 @@ function Reservations() {
             <th className="border border-slate-600">End Date</th>
             <th className="border border-slate-600">City</th>
             <th className="border border-slate-600">Vehicles</th>
+            <th className="border border-slate-600">Amount</th>
           </tr>
         </thead>
         <tbody>
@@ -30,6 +31,7 @@ function Reservations() {
               <td className="border border-slate-600">{reservation.returnDate}</td>
               <td className="border border-slate-600">{reservation.city}</td>
               <td className="border border-slate-600">{reservation.car.name}</td>
+              <td className="border border-slate-600">{reservation.amount}</td>
             </tr>
           ))}
         </tbody>
