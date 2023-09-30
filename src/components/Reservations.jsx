@@ -11,30 +11,30 @@ function Reservations() {
   }, [dispatch]);
 
   return (
-    <div>
-      <h1>Reservations</h1>
+    <section className="bg-[#95BF02] fixed top-0 bottom-0 left-0 right-0">
+      <h1 className="text-center">Reservations</h1>
 
-      <table>
+      <table className="mx-auto table-auto border-collapse border border-slate-500">
         <thead>
           <tr>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>City</th>
-            <th>Motorcycle</th>
+            <th className="border border-slate-600">Start Date</th>
+            <th className="border border-slate-600">End Date</th>
+            <th className="border border-slate-600">City</th>
+            <th className="border border-slate-600">Vehicles</th>
           </tr>
         </thead>
         <tbody>
           {reservations && reservations.map((reservation) => (
             <tr key={reservation.id}>
-              <td>{reservation.rentDate}</td>
-              <td>{reservation.returnDate}</td>
-              <td>{reservation.city}</td>
-              <td>{reservation.car.name}</td>
+              <td className="border border-slate-600">{reservation.rentDate}</td>
+              <td className="border border-slate-600">{reservation.returnDate}</td>
+              <td className="border border-slate-600">{reservation.city}</td>
+              <td className="border border-slate-600">{reservation.car.name}</td>
             </tr>
           ))}
         </tbody>
       </table>
-    </div>
+    </section>
   );
 }
 
