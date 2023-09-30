@@ -66,10 +66,10 @@ function AddReservations() {
   };
 
   return (
-    <section className="bg-[#95BF02] h-full m-0 md:fixed">
+    <section className="bg-[#95BF02] h-full m-0 md:fixed text-white">
       <div className="p-5 text-justify md:mx-auto md:w-1/2 md:my-[10%]">
-        <h2 className="text-center">RESERVE A CAR TEST-RIDE</h2>
-        <p className="my-2">
+        <h2 className="text-center font-bold">RESERVE A CAR TEST-RIDE</h2>
+        <p className="my-2 text-[9px] text-center">
           There are 34 different versions of the Vespa. Today five series are in
           production: the classic manual transmission PX and the modern CVT
           transmission S: LX. GT, and GTS: We have showrooms all over the globe
@@ -78,53 +78,55 @@ function AddReservations() {
           London Book Now
         </p>
 
-        <form onSubmit={handleFormSubmit}>
-          <label htmlFor="input-car">
-            <select
-              name="city"
-              id="input-car"
-              value={state.city}
-              onChange={handleChange}
-            >
-              <option value="" disabled>
-                --Pick a city --
-              </option>
-              {cityOptions}
-            </select>
-          </label>
-          <label htmlFor="input-car">
-            <select
-              name="carId"
-              id="input-car"
-              value={state.carBrand}
-              onChange={handleChange}
-            >
-              <option value="" disabled>
-                --Pick a Car brand --
-              </option>
-              {carOptions}
-            </select>
-          </label>
-          <label htmlFor="input-date">
+        <form onSubmit={handleFormSubmit} className="grid grid-cols-2 gap-3">
+          <select
+            name="city"
+            id="input-car"
+            value={state.city}
+            onChange={handleChange}
+            className="border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02]"
+          >
+            <option value="" disabled>
+              --Pick a city --
+            </option>
+            {cityOptions}
+          </select>
+          <select
+            name="carId"
+            id="input-car"
+            className="border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02]"
+            value={state.carBrand}
+            onChange={handleChange}
+          >
+            <option value="" disabled>
+              --Pick a Car brand --
+            </option>
+            {carOptions}
+          </select>
+          <label htmlFor="start_date">
+            Start:
             <input
               type="date"
               id="input-date"
               name="rentDate"
+              className="border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02] w-full"
               value={state.rentDate}
               onChange={handleChange}
-              placeholder="date"
+              placeholder="date time"
             />
           </label>
-          <label htmlFor="input-date">
+          <label htmlFor="start_date">
+            End:
             <input
               type="date"
               id="input-date"
               name="returnDate"
+              className="border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02] w-full"
               value={state.returnDate}
               onChange={handleChange}
             />
           </label>
-          <button type="submit">RESERVE NOW</button>
+          <button type="submit" className="col-span-2 border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02] w-1/2 mx-auto">RESERVE NOW</button>
         </form>
       </div>
     </section>
