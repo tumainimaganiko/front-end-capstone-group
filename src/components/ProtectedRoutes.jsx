@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { PropTypes } from 'prop-types';
-import { TOKENKEY } from 'util/auth';
-import RequireLogin from 'pages/RequireLogin';
+import { TOKENKEY } from '../util/auth';
+import RequireLogin from '../pages/RequireLogin';
 
 function ProtectedRoute({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

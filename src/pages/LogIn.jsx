@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useRef, useState, useEffect } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { storeSession } from '../util/auth';
+import { storeSession, TOKENKEY } from '../util/auth';
 import axios from '../api/axios';
+import WelcomePage from './WelcomePage';
+
 import '../styles/style.css';
 
 const LOGIN_URL = 'https://car-rental-api-91yl.onrender.com/users/tokens/sign_in';
@@ -38,8 +40,6 @@ function Login() {
         LOGIN_URL,
         formData,
       );
-      // console.log(JSON.stringify(response?.data));
-      // console.log(JSON.stringify(response));
       storeSession(response?.data.resource_owner, response?.data.token);
       setemail('');
       setPwd('');
@@ -63,15 +63,27 @@ function Login() {
     setFormData({ ...formData, [name]: value });
   };
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const checkUserToken = () => {
+    if (!localStorage.getItem(TOKENKEY) || localStorage.getItem(TOKENKEY) === undefined) {
+      setIsLoggedIn(false);
+    } else {
+      setIsLoggedIn(true);
+    }
+  };
+
+  useEffect(() => checkUserToken(), []);
+
+  if (isLoggedIn) {
+    return (
+      <WelcomePage />
+    );
+  }
+
   return (
     success ? (
-      <section>
-        <h1>You are logged in!</h1>
-        <br />
-        <p>
-          <a href="/">Go to Home</a>
-        </p>
-      </section>
+      <WelcomePage />
     ) : (
       <section className="log-section">
         <p
@@ -88,7 +100,10 @@ function Login() {
             <input
               type="email"
               id="email"
-              onChange={handleChange}
+              onChange={(e) => {
+                handleChange();
+                setemail(e.target.value);
+              }}
               value={formData.email}
               required
               ref={emailref}
@@ -101,7 +116,10 @@ function Login() {
             <input
               type={showPwd ? 'text' : 'password'}
               id="pwd"
-              onChange={handleChange}
+              onChange={(e) => {
+                handleChange();
+                setPwd(e.target.value);
+              }}
               value={formData.password}
               name="password"
               required

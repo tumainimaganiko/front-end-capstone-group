@@ -1,10 +1,22 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { TOKENKEY } from '../util/auth';
 import '../styles/style.css';
 
 function WelcomePage() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const checkUserToken = () => {
+    if (!localStorage.getItem(TOKENKEY) || localStorage.getItem(TOKENKEY) === undefined) {
+      setIsLoggedIn(false);
+    } else {
+      setIsLoggedIn(true);
+    }
+  };
+
+  useEffect(() => checkUserToken(), []);
   return (
     <section>
       <div className=" welcome flex flex-col items-center min-h-screen text-white">
@@ -17,24 +29,33 @@ function WelcomePage() {
           </p>
         </div>
         <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
-          <button
-            type="button"
-            className="bg-primary px-3 py-1 rounded hover:bg-lime-400"
-          >
-            <Link to="/LogIn" className="whitespace-nowrap ">
-              <FontAwesomeIcon icon={faSignInAlt} className="mr-2" />
-              Sign In
+          { isLoggedIn ? (
+            <Link
+              to="/cars"
+              className="bg-primary hover:bg-lime-400 hover:text-gray-500 text-white px-2 rounded-e-full p-1 md:ps-6 text-sm items-end"
+            >
+              See Cars
             </Link>
-          </button>
-          <button
-            type="button"
-            className="bg-primary px-3 py-1 rounded hover:bg-lime-400"
-          >
-            <Link to="/SignUp" className="whitespace-nowrap">
-              <FontAwesomeIcon icon={faUserPlus} className="mr-2" />
-              Sign Up
-            </Link>
-          </button>
+          ) : (
+            <>
+              <Link
+                to="/LogIn"
+                className="bg-primary hover:bg-lime-400 hover:text-gray-500 text-white px-2 rounded-e-full p-1 md:ps-6 text-sm items-end"
+              >
+                <FontAwesomeIcon icon={faSignInAlt} />
+                {' '}
+                Log In
+              </Link>
+              <Link
+                to="/SignUp"
+                className="bg-primary hover:bg-lime-400 hover:text-gray-500 text-white px-2 rounded-e-full p-1 md:ps-6 text-sm items-end"
+              >
+                <FontAwesomeIcon icon={faUserPlus} />
+                {' '}
+                Sign Up
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </section>

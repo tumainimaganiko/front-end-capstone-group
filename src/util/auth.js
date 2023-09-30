@@ -1,5 +1,5 @@
-export const TOKENKEY = 'car-token';
-export const USERKEY = 'car-user';
+export const TOKENKEY = 'token';
+export const USERKEY = 'user';
 
 export const setToken = (token) => {
   localStorage.setItem(TOKENKEY, JSON.stringify(token));
