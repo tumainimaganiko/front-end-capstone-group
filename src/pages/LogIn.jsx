@@ -25,22 +25,22 @@ function Login() {
     setErrMsg('');
   }, [email, pwd]);
 
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const response = await axios.post(
         LOGIN_URL,
-        JSON.stringify({ email, pwd }),
-        {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true,
-          accept: 'application/json',
-        },
+        formData,
       );
       // console.log(JSON.stringify(response?.data));
       // console.log(JSON.stringify(response));
-      storeSession(response?.data.email, response?.data.token);
+      storeSession(response?.data.resource_owner, response?.data.token);
       setemail('');
       setPwd('');
       setSuccess(true);
@@ -56,6 +56,11 @@ function Login() {
       }
       errRef.current.focus();
     }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   return (
@@ -83,10 +88,11 @@ function Login() {
             <input
               type="email"
               id="email"
-              onChange={(e) => setemail(e.target.value)}
-              value={email}
+              onChange={handleChange}
+              value={formData.email}
               required
               ref={emailref}
+              name="email"
             />
           </div>
 
@@ -95,8 +101,9 @@ function Login() {
             <input
               type={showPwd ? 'text' : 'password'}
               id="pwd"
-              onChange={(e) => setPwd(e.target.value)}
-              value={pwd}
+              onChange={handleChange}
+              value={formData.password}
+              name="password"
               required
             />
             <div
