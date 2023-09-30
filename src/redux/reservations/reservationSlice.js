@@ -2,7 +2,32 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
-  reservations: [],
+  reservations: [
+    {
+      rentDate: '2001',
+      returnDate: '2009',
+      city: 'Dar es Salaam',
+      car: { name: 'Mercedez Benz' },
+    },
+    {
+      rentDate: '2021',
+      returnDate: '2023',
+      city: 'Niger',
+      car: { name: 'BMW' },
+    },
+    {
+      rentDate: '2017',
+      returnDate: '2029',
+      city: 'Kigali',
+      car: { name: 'Porsche' },
+    },
+    {
+      rentDate: '1998',
+      returnDate: '2005',
+      city: 'Algeria',
+      car: { name: 'Mc Laren' },
+    },
+  ],
 };
 
 const baseUrl = 'http://localhost:3000/api/....';
