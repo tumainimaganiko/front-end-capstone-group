@@ -8,6 +8,7 @@ import Layout from './components/Layout';
 import ProtectedRoutes from './components/ProtectedRoutes';
 import Cars from './pages/Cars';
 import CarDetails from './components/CarDetails';
+import AddCar from './pages/AddCar';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
           <Route path="/Loader" element={<Loader />} />
           <Route path="/Cars" element={<ProtectedRoutes><Cars /></ProtectedRoutes>} />
           <Route path="/Cars/:id" element={<ProtectedRoutes><CarDetails /></ProtectedRoutes>} />
-
+          <Route path="/AddCar" element={<ProtectedRoutes><AddCar /></ProtectedRoutes>} />
         </Route>
       </Routes>
     </Router>
