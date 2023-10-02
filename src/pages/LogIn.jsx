@@ -101,7 +101,7 @@ function Login() {
               type="email"
               id="email"
               onChange={(e) => {
-                handleChange();
+                handleChange(e);
                 setemail(e.target.value);
               }}
               value={formData.email}
@@ -117,7 +117,7 @@ function Login() {
               type={showPwd ? 'text' : 'password'}
               id="pwd"
               onChange={(e) => {
-                handleChange();
+                handleChange(e);
                 setPwd(e.target.value);
               }}
               value={formData.password}
