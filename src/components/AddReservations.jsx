@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
+import { useParams } from 'react-router-dom';
 import { createReservation } from '../redux/reservations/reservationSlice';
 import { getUser } from '../util/auth';
 import { fetchCars } from '../redux/cars/carsSlice';
 
 function AddReservations() {
+  const { id } = useParams();
+
+  const { cars } = useSelector((store) => store.cars);
+
+  const getCarId = () => {
+    const car = cars.find((car) => car.id === Number(id));
+    return car ? car.id : '';
+  };
+
   const [state, setState] = useState({
-    user: getUser,
-    carId: '',
+    user: getUser().id,
+    carId: getCarId(),
     city: '',
     rentDate: '',
     returnDate: '',
   });
-
-  const { cars } = useSelector((store) => store.cars);
 
   const dispatch = useDispatch();
 
@@ -28,20 +35,6 @@ function AddReservations() {
       [e.target.name]: e.target.value,
     });
   };
-
-  const cities = [
-    'London',
-    'New York City',
-    'Dar es Salaam',
-    'Kigali',
-    'Lagos',
-  ];
-
-  const cityOptions = cities.map((city) => (
-    <option value={city} key={uuidv4()}>
-      {city}
-    </option>
-  ));
 
   const carOptions = Array.isArray(cars)
     ? cars.map((car) => (
@@ -57,7 +50,7 @@ function AddReservations() {
       createReservation(state),
       setState({
         username: '',
-        carBrand: '',
+        carId: '',
         city: '',
         rentDate: '',
         returnDate: '',
@@ -79,23 +72,19 @@ function AddReservations() {
         </p>
 
         <form onSubmit={handleFormSubmit} className="md:grid grid-cols-2 gap-3">
-          <select
+          <input
+            type="text"
             name="city"
             id="input-car"
             value={state.city}
             onChange={handleChange}
             className="border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02]"
-          >
-            <option value="" disabled>
-              --Pick a city --
-            </option>
-            {cityOptions}
-          </select>
+          />
           <select
             name="carId"
             id="input-car"
             className="border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02]"
-            value={state.carBrand}
+            value={state.carId}
             onChange={handleChange}
           >
             <option value="" disabled>
