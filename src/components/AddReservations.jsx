@@ -23,8 +23,6 @@ function AddReservations() {
     returnDate: '',
   });
 
-  const { cars } = useSelector((store) => store.cars);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
