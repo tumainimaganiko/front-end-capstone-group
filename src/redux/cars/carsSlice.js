@@ -5,7 +5,7 @@ import car1 from '../../images/car1.png';
 import car2 from '../../images/car2.png';
 import car3 from '../../images/car3.png';
 
-const baseUrl = 'http://localhost:3000/api/....';
+const baseUrl = 'https://car-rental-api-91yl.onrender.com/api/v1/car';
 
 const initialState = {
   cars: [{
@@ -77,7 +77,7 @@ export const addCar = createAsyncThunk(
   async (car) => {
     const response = await axios.post(baseUrl, car, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem(TOKENKEY)}`,
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY))}`,
       },
     });
     return response.data;
@@ -89,7 +89,7 @@ export const deleteCar = createAsyncThunk(
   async (id) => {
     await axios.delete(`${baseUrl}/${id}`, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem(TOKENKEY)}`,
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY))}`,
       },
     });
     return id;
