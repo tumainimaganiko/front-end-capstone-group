@@ -66,24 +66,6 @@ form {
   padding-bottom: 1rem;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-textarea {
-  font-family: "Courier New", sans-serif;
-  font-size: 22px;
-  border-radius: 0.5rem;
-  margin: 0.25rem;
-  width: 100%;
-}
-
-label {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 0.5rem;
-}
-
 .instructions {
   font-size: 0.75rem;
   border-radius: 0.5rem;
