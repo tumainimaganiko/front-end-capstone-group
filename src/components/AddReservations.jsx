@@ -16,8 +16,8 @@ function AddReservations() {
   };
 
   const [state, setState] = useState({
-    user: getUser,
-    carId: '',
+    user: getUser().id,
+    carId: getCarId(),
     city: '',
     rentDate: '',
     returnDate: '',
