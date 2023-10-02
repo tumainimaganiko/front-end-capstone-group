@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
+import { useParams } from 'react-router-dom';
 import { createReservation } from '../redux/reservations/reservationSlice';
 import { getUser } from '../util/auth';
 import { fetchCars } from '../redux/cars/carsSlice';
@@ -73,7 +73,7 @@ function AddReservations() {
 
         <form onSubmit={handleFormSubmit} className="md:grid grid-cols-2 gap-3">
           <input
-          type='text'
+            type="text"
             name="city"
             id="input-car"
             value={state.city}
