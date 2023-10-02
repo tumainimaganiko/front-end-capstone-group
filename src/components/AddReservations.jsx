@@ -36,20 +36,6 @@ function AddReservations() {
     });
   };
 
-  const cities = [
-    'London',
-    'New York City',
-    'Dar es Salaam',
-    'Kigali',
-    'Lagos',
-  ];
-
-  const cityOptions = cities.map((city) => (
-    <option value={city} key={uuidv4()}>
-      {city}
-    </option>
-  ));
-
   const carOptions = Array.isArray(cars)
     ? cars.map((car) => (
       <option value={car.id} key={car.id}>
@@ -64,7 +50,7 @@ function AddReservations() {
       createReservation(state),
       setState({
         username: '',
-        carBrand: '',
+        carId: '',
         city: '',
         rentDate: '',
         returnDate: '',
@@ -86,23 +72,19 @@ function AddReservations() {
         </p>
 
         <form onSubmit={handleFormSubmit} className="md:grid grid-cols-2 gap-3">
-          <select
+          <input
+          type='text'
             name="city"
             id="input-car"
             value={state.city}
             onChange={handleChange}
             className="border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02]"
-          >
-            <option value="" disabled>
-              --Pick a city --
-            </option>
-            {cityOptions}
-          </select>
+          />
           <select
             name="carId"
             id="input-car"
             className="border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02]"
-            value={state.carBrand}
+            value={state.carId}
             onChange={handleChange}
           >
             <option value="" disabled>
