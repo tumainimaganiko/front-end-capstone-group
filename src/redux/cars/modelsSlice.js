@@ -19,11 +19,9 @@ export const fetchModels = createAsyncThunk('models/fetchModels', async () => {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log('Response:', response.data);
 
     return response.data;
   } catch (error) {
-    console.error('Error:', error);
     throw Error(error.response?.data?.message || 'Failed to fetch models');
   }
 });
