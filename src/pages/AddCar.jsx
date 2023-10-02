@@ -1,12 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addCar } from '../redux/cars/carsSlice';
+import { fetchModels } from '../redux/cars/modelsSlice';
 
 function AddCarPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const models = useSelector((state) => state.models.models);
 
   const [formData, setFormData] = useState({
     carName: '',
@@ -14,7 +16,14 @@ function AddCarPage() {
     carPhoto: '',
     pricePerDay: '0',
     city: '',
+    selectedModel: '',
   });
+
+  console.log(fetchModels());
+
+  useEffect(() => {
+    dispatch(fetchModels());
+  }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,6 +35,14 @@ function AddCarPage() {
     setFormData((prevData) => ({
       ...prevData,
       [field]: value,
+    }));
+  };
+
+  const handleModelChange = (e) => {
+    const selectedModel = e.target.value;
+    setFormData((prevData) => ({
+      ...prevData,
+      selectedModel,
     }));
   };
 
@@ -46,6 +63,26 @@ function AddCarPage() {
               value={formData.carName}
               required
             />
+          </div>
+
+          <div className="mb-4 md:mb-1">
+            <label htmlFor="selectedModel" className="block font-medium">
+              Select Model:
+            </label>
+            <select
+              id="selectedModel"
+              className="border border-gray-300 rounded w-full"
+              onChange={handleModelChange}
+              value={formData.selectedModel}
+              required
+            >
+              <option value="">-- Select a Model --</option>
+              {models.map((model) => (
+                <option key={model.id} value={model.id}>
+                  {model.name}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className="mb-4 md:mb-1">

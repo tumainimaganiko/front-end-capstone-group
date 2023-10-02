@@ -10,44 +10,23 @@ const initialState = {
   error: null,
 };
 
-export const fetchModels = createAsyncThunk(
-  'models/fetchModels',
-  async () => {
-    const token = localStorage.getItem(TOKENKEY);
+export const fetchModels = createAsyncThunk('models/fetchModels', async () => {
+  const token = JSON.parse(localStorage.getItem(TOKENKEY));
+
+  try {
     const response = await axios.get(baseUrl, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    return response.data;
-  },
-);
+    console.log('Response:', response.data);
 
-export const addModel = createAsyncThunk(
-  'models/addModel',
-  async (model) => {
-    const token = localStorage.getItem(TOKENKEY);
-    const response = await axios.post(baseUrl, model, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
     return response.data;
-  },
-);
-
-export const deleteModel = createAsyncThunk(
-  'models/deleteModel',
-  async (id) => {
-    const token = localStorage.getItem(TOKENKEY);
-    await axios.delete(`${baseUrl}/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return id;
-  },
-);
+  } catch (error) {
+    console.error('Error:', error);
+    throw Error(error.response?.data?.message || 'Failed to fetch models');
+  }
+});
 
 const modelsSlice = createSlice({
   name: 'models',
@@ -55,15 +34,19 @@ const modelsSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(fetchModels.fulfilled, (state, action) => ({
-        ...state,
-        models: action.payload,
-        isLoading: false,
-      }))
-      .addCase(deleteModel.fulfilled, (state, action) => ({
-        ...state,
-        models: state.models.filter((model) => model.id !== action.payload),
-      }));
+      .addCase(fetchModels.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(fetchModels.fulfilled, (state, action) => {
+        state.models = action.payload;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(fetchModels.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
+      });
   },
 });
 
