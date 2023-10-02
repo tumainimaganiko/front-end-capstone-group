@@ -16,7 +16,7 @@ function CarDetails() {
   }
 
   return (
-    <div className="bg-white shadow-md p-4 md:flex-col">
+    <div className="bg-white shadow-md p-4 md:flex-col sm:h-screen">
       <h2 className="text-xl font-semibold text-center sm:text-end sm:me-24 mt-2">{car.name}</h2>
       <div className="mt-4 flex flex-col sm:flex-row">
         <img
