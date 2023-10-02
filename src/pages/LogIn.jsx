@@ -1,11 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useRef, useState, useEffect } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { storeSession } from '../util/auth';
+import { storeSession, TOKENKEY } from '../util/auth';
 import axios from '../api/axios';
+import WelcomePage from './WelcomePage';
+
 import '../styles/style.css';
 
-const LOGIN_URL = '/auth';
+const LOGIN_URL = 'https://car-rental-api-91yl.onrender.com/users/tokens/sign_in';
 
 function Login() {
   const emailref = useRef();
@@ -25,22 +27,20 @@ function Login() {
     setErrMsg('');
   }, [email, pwd]);
 
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const response = await axios.post(
         LOGIN_URL,
-        JSON.stringify({ email, pwd }),
-        {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true,
-          accept: 'application/json',
-        },
+        formData,
       );
-      // console.log(JSON.stringify(response?.data));
-      // console.log(JSON.stringify(response));
-      storeSession(response?.data.email, response?.data.token);
+      storeSession(response?.data.resource_owner, response?.data.token);
       setemail('');
       setPwd('');
       setSuccess(true);
@@ -58,15 +58,32 @@ function Login() {
     }
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const checkUserToken = () => {
+    if (!localStorage.getItem(TOKENKEY) || localStorage.getItem(TOKENKEY) === undefined) {
+      setIsLoggedIn(false);
+    } else {
+      setIsLoggedIn(true);
+    }
+  };
+
+  useEffect(() => checkUserToken(), []);
+
+  if (isLoggedIn) {
+    return (
+      <WelcomePage />
+    );
+  }
+
   return (
     success ? (
-      <section>
-        <h1>You are logged in!</h1>
-        <br />
-        <p>
-          <a href="/">Go to Home</a>
-        </p>
-      </section>
+      <WelcomePage />
     ) : (
       <section className="log-section">
         <p
@@ -83,10 +100,14 @@ function Login() {
             <input
               type="email"
               id="email"
-              onChange={(e) => setemail(e.target.value)}
-              value={email}
+              onChange={(e) => {
+                handleChange(e);
+                setemail(e.target.value);
+              }}
+              value={formData.email}
               required
               ref={emailref}
+              name="email"
             />
           </div>
 
@@ -95,8 +116,12 @@ function Login() {
             <input
               type={showPwd ? 'text' : 'password'}
               id="pwd"
-              onChange={(e) => setPwd(e.target.value)}
-              value={pwd}
+              onChange={(e) => {
+                handleChange(e);
+                setPwd(e.target.value);
+              }}
+              value={formData.password}
+              name="password"
               required
             />
             <div

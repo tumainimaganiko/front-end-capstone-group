@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {
   faCheck,
   faTimes,
@@ -14,7 +15,8 @@ import '../styles/style.css';
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const EMAIL_REGEX = /^[A-z0-9-_]+@[A-z0-9-_]+\.[A-z0-9-_]+$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = '/register';
+const PHONE_REGEX = /^\d{3}-\d{3}-\d{4}$/;
+const REGISTER_URL = 'https://car-rental-api-91yl.onrender.com/api/v1/users';
 
 function SignUp() {
   const userRef = useRef();
@@ -27,6 +29,10 @@ function SignUp() {
   const [email, setEmail] = useState('');
   const [validEmail, setValidEmail] = useState(false);
   const [emailFocus, setEmailFocus] = useState(false);
+
+  const [phone, setPhone] = useState('');
+  const [validPhone, setValidPhone] = useState(false);
+  const [phoneFocus, setPhoneFocus] = useState(false);
 
   const [pwd, setPwd] = useState('');
   const [ShowPwd, setShowPwd] = useState(false);
@@ -53,6 +59,10 @@ function SignUp() {
   }, [email]);
 
   useEffect(() => {
+    setValidPhone(PHONE_REGEX.test(phone));
+  }, [phone]);
+
+  useEffect(() => {
     setValidPwd(PWD_REGEX.test(pwd));
     setValidMatch(pwd === matchPwd);
   }, [pwd, matchPwd]);
@@ -61,25 +71,35 @@ function SignUp() {
     setErrMsg('');
   }, [user, pwd, matchPwd]);
 
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    phone: '',
+  });
+
+  useEffect(() => {
+    setFormData({
+      name: user,
+      phone_number: phone,
+      email,
+      password: pwd,
+    });
+  }, [user, email, pwd, phone]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     // if button enabled with JS hack
     const v1 = USER_REGEX.test(user);
     const v2 = PWD_REGEX.test(pwd);
     const v3 = EMAIL_REGEX.test(email);
-    if (!v1 || !v2 || !v3) {
+    const v4 = PHONE_REGEX.test(phone);
+    if (!v1 || !v2 || !v3 || !v4) {
       setErrMsg('Invalid Entry');
       return;
     }
     try {
-      const response = await axios.post(
-        REGISTER_URL,
-        JSON.stringify({ user, pwd, email }),
-        {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true,
-        },
-      );
+      const response = await axios.post(REGISTER_URL, formData);
       // console.log(response?.data);
       // console.log(response?.accessToken);
       // console.log(JSON.stringify(response));
@@ -88,10 +108,11 @@ function SignUp() {
       // need value attrib on inputs for this
       setUser('');
       setEmail('');
+      setPhone('');
       setPwd('');
       setMatchPwd('');
       // store session
-      storeSession(response?.data);
+      storeSession(response?.data.resource_owner, response?.data.token);
     } catch (err) {
       if (!err?.response) {
         setErrMsg('No Server Response');
@@ -106,10 +127,8 @@ function SignUp() {
 
   return success ? (
     <section>
-      <h1>Success!</h1>
-      <p>
-        <a href="./LogIn">Log In</a>
-      </p>
+      <h1>You are registered!</h1>
+      <Link to="/LogIn">Sign In</Link>
     </section>
   ) : (
     <section className="log-section">
@@ -183,6 +202,37 @@ function SignUp() {
         >
           <FontAwesomeIcon icon={faInfoCircle} />
           Must be a valid email address.
+        </p>
+
+        <label htmlFor="phone">
+          Phone:
+          {validPhone && <FontAwesomeIcon icon={faCheck} className="valid" />}
+          {!validPhone && phone && (
+            <FontAwesomeIcon icon={faTimes} className="invalid" />
+          )}
+        </label>
+        <input
+          type="tel"
+          id="phone"
+          autoComplete="off"
+          onChange={(e) => setPhone(e.target.value)}
+          value={phone}
+          required
+          aria-invalid={validPhone ? 'false' : 'true'}
+          aria-describedby="phonenote"
+          onFocus={() => setPhoneFocus(true)}
+          onBlur={() => setPhoneFocus(false)}
+        />
+        <p
+          id="phonenote"
+          className={
+            phoneFocus && phone && !validPhone ? 'instructions' : 'offscreen'
+          }
+        >
+          <FontAwesomeIcon icon={faInfoCircle} />
+          Must be a valid phone number.
+          <br />
+          Format: 123-456-7890
         </p>
 
         <label htmlFor="password">
@@ -285,7 +335,6 @@ function SignUp() {
         Already registered?
         <br />
         <span className="line  bg-secondary px-2 rounded-lg">
-          {/* put router link here */}
           <a href="/LogIn">Sign In</a>
         </span>
       </p>
