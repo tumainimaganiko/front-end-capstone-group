@@ -16,8 +16,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/reservations" element={<AddReservations />} />
-          <Route path="/my-reservations" element={<Reservations />} />
+          <Route path="/reservations" element={<ProtectedRoutes><AddReservations /></ProtectedRoutes>} />
+          <Route path="/my-reservations" element={<ProtectedRoutes><Reservations /></ProtectedRoutes>} />
           <Route index element={<WelcomePage />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/LogIn" element={<LogIn />} />
