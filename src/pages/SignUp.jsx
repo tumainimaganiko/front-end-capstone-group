@@ -15,7 +15,7 @@ import '../styles/style.css';
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const EMAIL_REGEX = /^[A-z0-9-_]+@[A-z0-9-_]+\.[A-z0-9-_]+$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const PHONE_REGEX = /^\d{3}-\d{3}-\d{4}$/;
+const PHONE_REGEX = /^(\+\d{1,3}\s?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
 const REGISTER_URL = 'https://car-rental-api-91yl.onrender.com/api/v1/users';
 
 function SignUp() {
@@ -231,8 +231,6 @@ function SignUp() {
         >
           <FontAwesomeIcon icon={faInfoCircle} />
           Must be a valid phone number.
-          <br />
-          Format: 123-456-7890
         </p>
 
         <label htmlFor="password">
