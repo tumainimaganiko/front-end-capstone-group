@@ -6,6 +6,15 @@ import { getUser } from '../util/auth';
 import { fetchCars } from '../redux/cars/carsSlice';
 
 function AddReservations() {
+  const { id } = useParams();
+
+  const { cars } = useSelector((store) => store.cars);
+
+  const getCarId = () => {
+    const car = cars.find((car) => car.id === Number(id));
+    return car ? car.id : '';
+  };
+
   const [state, setState] = useState({
     user: getUser,
     carId: '',
