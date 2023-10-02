@@ -9,7 +9,6 @@ import AddReservations from './components/AddReservations';
 import Cars from './pages/Cars';
 import Reservations from './components/Reservations';
 import ProtectedRoutes from './components/ProtectedRoutes';
-import Cars from './pages/Cars';
 import CarDetails from './components/CarDetails';
 
 function App() {
