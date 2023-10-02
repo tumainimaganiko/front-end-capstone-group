@@ -17,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/reservations" element={<ProtectedRoutes><AddReservations /></ProtectedRoutes>} />
+          <Route path="/reservations/:id" element={<ProtectedRoutes><AddReservations /></ProtectedRoutes>} />
           <Route path="/my-reservations" element={<ProtectedRoutes><Reservations /></ProtectedRoutes>} />
           <Route index element={<WelcomePage />} />
           <Route path="/SignUp" element={<SignUp />} />

@@ -47,7 +47,7 @@ function CarDetails() {
             </table>
           </div>
           <Link
-            to={`/reservation/${car.id}`}
+            to={`/reservations/${car.id}`}
             className="bg-primary hover:bg-lime-400 hover:text-gray-500 text-white mt-4 p-2 m-1 rounded-lg text-sm flex mx-auto items-center justify-center max-w-fit"
           >
             <FiCalendar className="mr-2" />

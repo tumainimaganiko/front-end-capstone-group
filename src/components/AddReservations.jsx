@@ -76,6 +76,7 @@ function AddReservations() {
             type="text"
             name="city"
             id="input-car"
+            placeholder="City"
             value={state.city}
             onChange={handleChange}
             className="border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02]"
