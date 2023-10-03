@@ -1,18 +1,28 @@
-import React, { useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { fetchCars } from '../redux/cars/carsSlice';
+import axios from 'axios';
+import Loader from './loader/Loader';
 
 function Slider() {
-  const [currentIndex, setCurrentIndex] = React.useState(0);
-  const [hoveredIndex, setHoveredIndex] = React.useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [cars, setCars] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const intervalRef = useRef(null);
-  const dispatch = useDispatch();
-  const cars = useSelector((state) => state.cars.cars);
 
   useEffect(() => {
-    dispatch(fetchCars());
+    const fetchCars = async () => {
+      try {
+        const response = await axios.get('https://car-rental-api-91yl.onrender.com/api/v1/car');
+        setCars(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCars();
 
     intervalRef.current = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex === cars.length - 1 ? 0 : prevIndex + 1));
@@ -21,7 +31,7 @@ function Slider() {
     return () => {
       clearInterval(intervalRef.current);
     };
-  }, [dispatch, cars.length]);
+  }, [cars.length]);
 
   const resetInterval = () => {
     clearInterval(intervalRef.current);
@@ -61,6 +71,10 @@ function Slider() {
     visibleCars.push(cars[firstIndex], cars[secondIndex], cars[currentIndex]);
   }
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <div className="relative flex justify-center">
       <div className="overflow-hidden">
@@ -74,10 +88,7 @@ function Slider() {
               onMouseEnter={() => handleCarHover(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <Link
-                to={`/cars/${car.id}`}
-                className="block"
-              >
+              <Link to={`/cars/${car.id}`} className="block">
                 <div className="flex flex-col items-center p-4">
                   <span>
                     <span className="text-2xl font-semibold">{car.price}</span>
@@ -110,7 +121,7 @@ function Slider() {
         <button
           type="button"
           onClick={handleNext}
-          className="bg-primary text-gray-200 hover:bg-lime-300 rounded-s-full p-1 md:pe-6"
+          className="bg-primary text-gray-200 hover:bg-lime-300 rounded-s-full md:pe-6 p-1"
         >
           <FaChevronRight className="h-4 w-4" />
         </button>

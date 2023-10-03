@@ -14,7 +14,6 @@ export const fetchCars = createAsyncThunk(
   'cars/fetchCars',
   async () => {
     const response = await axios.get(baseUrl);
-    console.log(response.data);
     return response.data;
   },
 );
@@ -27,7 +26,6 @@ export const addCar = createAsyncThunk(
         Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY))}`,
       },
     });
-    console.log(response.data);
     return response.data;
   },
 );
@@ -56,7 +54,7 @@ const carsSlice = createSlice({
       }))
       .addCase(fetchCars.fulfilled, (state, action) => ({
         ...state,
-        cars: [...state.cars, ...action.payload],
+        cars: action.payload,
         isLoading: false,
       }))
       .addCase(fetchCars.rejected, (state, action) => ({
