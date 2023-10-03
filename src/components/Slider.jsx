@@ -1,21 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import axios from 'axios';
 import Loader from './loader/Loader';
+import { setCars } from '../redux/cars/carsSlice';
 
 function Slider() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [cars, setCars] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const intervalRef = useRef(null);
+  const dispatch = useDispatch();
+  const cars = useSelector((state) => state.cars.cars);
 
   useEffect(() => {
     const fetchCars = async () => {
       try {
         const response = await axios.get('https://car-rental-api-91yl.onrender.com/api/v1/car');
-        setCars(response.data);
+        dispatch(setCars(response.data));
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
@@ -31,7 +34,7 @@ function Slider() {
     return () => {
       clearInterval(intervalRef.current);
     };
-  }, [cars.length]);
+  }, [dispatch, cars.length]);
 
   const resetInterval = () => {
     clearInterval(intervalRef.current);
