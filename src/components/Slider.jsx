@@ -7,106 +7,77 @@ import Loader from './loader/Loader';
 import { setCars } from '../redux/cars/carsSlice';
 
 function Slider() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const intervalRef = useRef(null);
   const dispatch = useDispatch();
   const cars = useSelector((state) => state.cars.cars);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [current, setCurrent] = useState(0);
+  const { length } = cars;
+  const timeout = useRef(null);
+
+  const nextSlide = () => {
+    setCurrent(current === length - 1 ? 0 : current + 1);
+  };
+
+  const prevSlide = () => {
+    setCurrent(current === 0 ? length - 1 : current - 1);
+  };
 
   useEffect(() => {
-    const fetchCars = async () => {
-      try {
-        const response = await axios.get('https://car-rental-api-91yl.onrender.com/api/v1/car');
-        dispatch(setCars(response.data));
+    axios
+      .get('https://car-rental-api-91yl.onrender.com/api/v1/car')
+      .then((res) => {
+        dispatch(setCars(res.data));
         setIsLoading(false);
-      } catch (error) {
+      })
+      .catch((err) => {
+        setError(err.message);
         setIsLoading(false);
-      }
-    };
+      });
+  }, [dispatch]);
 
-    fetchCars();
-
-    intervalRef.current = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex === cars.length - 1 ? 0 : prevIndex + 1));
-    }, 3500);
+  useEffect(() => {
+    timeout.current = setTimeout(() => {
+      setCurrent(current === length - 1 ? 0 : current + 1);
+    }, 3000);
 
     return () => {
-      clearInterval(intervalRef.current);
+      if (timeout.current) {
+        clearTimeout(timeout.current);
+      }
     };
-  }, [dispatch, cars.length]);
-
-  const resetInterval = () => {
-    clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex === cars.length - 1 ? 0 : prevIndex + 1));
-    }, 3500);
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? cars.length - 1 : prevIndex - 1));
-    resetInterval();
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === cars.length - 1 ? 0 : prevIndex + 1));
-    resetInterval();
-  };
-
-  const handleCarHover = (index) => {
-    setHoveredIndex(index);
-    resetInterval();
-  };
-
-  const visibleCars = [];
-  if (window.innerWidth < 640) {
-    visibleCars.push(cars[currentIndex]);
-  } else {
-    const firstIndex = currentIndex === 0 ? cars.length - 1 : currentIndex - 1;
-    let secondIndex;
-    if (currentIndex === 0) {
-      secondIndex = cars.length - 2;
-    } else if (currentIndex === 1) {
-      secondIndex = cars.length - 1;
-    } else {
-      secondIndex = currentIndex - 2;
-    }
-    visibleCars.push(cars[firstIndex], cars[secondIndex], cars[currentIndex]);
-  }
+  }, [current, length]);
 
   if (isLoading) {
     return <Loader />;
   }
 
+  if (error) {
+    return <p className="text-center">{error}</p>;
+  }
+
   return (
-    <div className="relative flex justify-center">
+    <>
       <div className="overflow-hidden">
-        <div className="flex border m-3">
-          {visibleCars.map((car, index) => (
+        <div className="flex justify-between bg-secondary items-center m-3 relative">
+          {cars.map((car, index) => (
             <div
               key={car.id}
-              className={`transition-opacity duration-1000 m-3 w-full sm:w-1/2 md:w-1/3 ${
-                hoveredIndex === index ? 'hover:scale-105' : ''
+              className={`transition-opacity duration-1000 w-full ${
+                index === current ? 'opacity-100' : 'opacity-0'
               }`}
-              onMouseEnter={() => handleCarHover(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
             >
-              <Link to={`/cars/${car.id}`} className="block">
-                <div className="flex flex-col items-center p-4">
-                  <span>
-                    <span className="text-2xl font-semibold">{car.price}</span>
-                    <span className="text-sm">/day</span>
-                  </span>
-                  <img className="mb-4" src={car.image} alt="car" />
-                  <h2 className="text-lg font-semibold mb-2">{car.name}</h2>
+              {index === current && (
+                <div className="flex flex-col justify-center items-center h-full">
+                  <h1 className="text-4xl text-white font-bold mb-4">{car.name}</h1>
                   <Link
-                    to={`/cars/${car.id}`}
-                    className="bg-primary px-3 py-1 my-4 rounded hover:bg-lime-400 text-white"
+                    to={`/Cars/${car.id}`}
+                    className="bg-white text-black px-4 py-2 rounded-full"
                   >
-                    Details
+                    View Details
                   </Link>
                 </div>
-              </Link>
+              )}
             </div>
           ))}
         </div>
@@ -114,8 +85,8 @@ function Slider() {
       <div className="absolute inset-y-0 left-0 flex items-center">
         <button
           type="button"
-          onClick={handlePrev}
-          className="bg-primary text-gray-200 hover:bg-lime-300 rounded-e-full md:ps-6 p-1"
+          onClick={prevSlide}
+          className="bg-primary text-gray-200 hover:bg-lime-300 rounded-e-full md:ps-6 p-1 "
         >
           <FaChevronLeft className="h-4 w-4" />
         </button>
@@ -123,13 +94,14 @@ function Slider() {
       <div className="absolute inset-y-0 right-0 flex items-center">
         <button
           type="button"
-          onClick={handleNext}
-          className="bg-primary text-gray-200 hover:bg-lime-300 rounded-s-full md:pe-6 p-1"
+          onClick={nextSlide}
+          className="bg-primary text-gray-200 hover:bg-lime-300 rounded-s-full p-1 md:pe-6"
         >
           <FaChevronRight className="h-4 w-4" />
         </button>
       </div>
-    </div>
+
+    </>
   );
 }
 
