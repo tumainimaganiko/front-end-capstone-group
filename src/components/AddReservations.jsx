@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { createReservation } from '../redux/reservations/reservationSlice';
-import { getUser } from '../util/auth';
 import { fetchCars } from '../redux/cars/carsSlice';
 
 function AddReservations() {
@@ -16,11 +15,10 @@ function AddReservations() {
   };
 
   const [state, setState] = useState({
-    user: getUser().id,
-    carId: getCarId(),
-    city: '',
-    rentDate: '',
-    returnDate: '',
+    car_id: getCarId(),
+    destination: '',
+    rental_date: '',
+    date_return: '',
   });
 
   const dispatch = useDispatch();
@@ -49,11 +47,10 @@ function AddReservations() {
     dispatch(
       createReservation(state),
       setState({
-        username: '',
-        carId: '',
-        city: '',
-        rentDate: '',
-        returnDate: '',
+        car_id: '',
+        destination: '',
+        rental_date: '',
+        date_return: '',
       }),
     );
   };
@@ -74,18 +71,18 @@ function AddReservations() {
         <form onSubmit={handleFormSubmit} className="md:grid grid-cols-2 gap-3">
           <input
             type="text"
-            name="city"
+            name="destination"
             id="input-car"
             placeholder="City"
-            value={state.city}
+            value={state.destination}
             onChange={handleChange}
             className="border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02]"
           />
           <select
-            name="carId"
+            name="car_id"
             id="input-car"
             className="border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02]"
-            value={state.carId}
+            value={state.car_id}
             onChange={handleChange}
           >
             <option value="" disabled>
@@ -98,9 +95,9 @@ function AddReservations() {
             <input
               type="date"
               id="input-date"
-              name="rentDate"
+              name="rental_date"
               className="border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02] w-full"
-              value={state.rentDate}
+              value={state.rental_date}
               onChange={handleChange}
               placeholder="date time"
             />
@@ -110,9 +107,9 @@ function AddReservations() {
             <input
               type="date"
               id="input-date"
-              name="returnDate"
+              name="date_return"
               className="border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02] w-full"
-              value={state.returnDate}
+              value={state.date_return}
               onChange={handleChange}
             />
           </label>
