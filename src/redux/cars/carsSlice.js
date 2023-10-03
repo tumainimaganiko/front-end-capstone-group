@@ -1,61 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { TOKENKEY } from '../../util/auth';
-import car1 from '../../images/car1.png';
-import car2 from '../../images/car2.png';
-import car3 from '../../images/car3.png';
 
 const baseUrl = 'https://car-rental-api-91yl.onrender.com/api/v1/car';
 
 const initialState = {
-  cars: [{
-    id: 1,
-    name: 'Car 1',
-    image: car1,
-    details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    price: '25$',
-    city: 'Paris',
-  },
-  {
-    id: 2,
-    name: 'Car 2',
-    image: car2,
-    details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    price: '12$',
-    city: 'Paris',
-  },
-  {
-    id: 3,
-    name: 'Car 3',
-    image: car3,
-    details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    price: '20$',
-    city: 'Paris',
-  },
-  {
-    id: 4,
-    name: 'Car 4',
-    image: car2,
-    details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    price: '35$',
-    city: 'Paris',
-  },
-  {
-    id: 5,
-    name: 'Car 5',
-    image: car2,
-    details: 'Lorem ipsum ',
-    price: '29$',
-    city: 'Paris',
-  },
-  {
-    id: 6,
-    name: 'Car 6',
-    image: car3,
-    details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    price: '5$',
-    city: 'Paris',
-  }],
+  cars: [],
   isLoading: false,
   error: null,
 };
@@ -63,11 +13,8 @@ const initialState = {
 export const fetchCars = createAsyncThunk(
   'cars/fetchCars',
   async () => {
-    const response = await axios.get(baseUrl, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem(TOKENKEY)}`,
-      },
-    });
+    const response = await axios.get(baseUrl);
+    console.log(response.data);
     return response.data;
   },
 );
@@ -75,11 +22,12 @@ export const fetchCars = createAsyncThunk(
 export const addCar = createAsyncThunk(
   'cars/addCar',
   async (car) => {
-    const response = await axios.post(baseUrl, car, {
+    const response = await axios.post(baseUrl, car.car, {
       headers: {
         Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY))}`,
       },
     });
+    console.log(response.data);
     return response.data;
   },
 );
@@ -102,10 +50,19 @@ const carsSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
+      .addCase(fetchCars.pending, (state) => ({
+        ...state,
+        isLoading: true,
+      }))
       .addCase(fetchCars.fulfilled, (state, action) => ({
         ...state,
-        cars: action.payload,
+        cars: [...state.cars, ...action.payload],
         isLoading: false,
+      }))
+      .addCase(fetchCars.rejected, (state, action) => ({
+        ...state,
+        isLoading: false,
+        error: action.error.message,
       }))
       .addCase(deleteCar.fulfilled, (state, action) => ({
         ...state,

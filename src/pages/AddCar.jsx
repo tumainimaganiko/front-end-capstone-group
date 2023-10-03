@@ -31,7 +31,6 @@ function AddCarPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
     dispatch(addCar({ car: formData }));
     // navigate('/Cars');
   };
@@ -44,7 +43,7 @@ function AddCarPage() {
   };
 
   const handleModelChange = (e) => {
-    const model_id = e.target.value;
+    const model_id = parseInt(e.target.value, 10);
     setFormData((prevData) => ({
       ...prevData,
       model_id,
