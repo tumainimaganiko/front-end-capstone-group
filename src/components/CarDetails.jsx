@@ -16,7 +16,7 @@ function CarDetails() {
   }
 
   return (
-    <div className="bg-white shadow-md p-4 md:flex-col">
+    <div className="bg-white shadow-md p-4 md:flex-col sm:h-screen">
       <h2 className="text-xl font-semibold text-center sm:text-end sm:me-24 mt-2">{car.name}</h2>
       <div className="mt-4 flex flex-col sm:flex-row">
         <img
@@ -28,9 +28,13 @@ function CarDetails() {
           <div className="bg-gray-50 mt-2 flex items-center justify-center">
             <table className="w-60 border-collapse border-black text-sm items-center">
               <tbody>
+                <tr className="p-2">
+                  <td className="p-2">Car Model</td>
+                  <td className="p-2 pe-3 text-right">{car.model}</td>
+                </tr>
                 <tr className="p-2 bg-gray-300">
-                  <td className="p-2">Details:</td>
-                  <td className="p-2 pe-3 text-right">{car.details}</td>
+                  <td className="p-2">Plate number:</td>
+                  <td className="p-2 pe-3 text-right">{car.plate_number}</td>
                 </tr>
                 <tr className="py-1">
                   <td className="p-2 ">Price</td>

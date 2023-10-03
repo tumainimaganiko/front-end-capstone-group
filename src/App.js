@@ -10,6 +10,8 @@ import Cars from './pages/Cars';
 import Reservations from './components/Reservations';
 import ProtectedRoutes from './components/ProtectedRoutes';
 import CarDetails from './components/CarDetails';
+import AddCar from './pages/AddCar';
+import DeleteCar from './pages/DeleteCar';
 
 function App() {
   return (
@@ -25,7 +27,8 @@ function App() {
           <Route path="/Loader" element={<Loader />} />
           <Route path="/Cars" element={<ProtectedRoutes><Cars /></ProtectedRoutes>} />
           <Route path="/Cars/:id" element={<ProtectedRoutes><CarDetails /></ProtectedRoutes>} />
-
+          <Route path="/AddCar" element={<ProtectedRoutes><AddCar /></ProtectedRoutes>} />
+          <Route path="/DeleteCar" element={<ProtectedRoutes><DeleteCar /></ProtectedRoutes>} />
         </Route>
       </Routes>
     </Router>

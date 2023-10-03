@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
+import { FiLogOut } from 'react-icons/fi';
 import { destroySession, TOKENKEY } from '../../util/auth';
 
 function Log() {
@@ -20,13 +21,12 @@ function Log() {
     return (
       <div className="flex justify-end ">
         <button
-          className="absolute m-1 inline-flex items-center whitespace-nowrap justify-center p-0.5 mb-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-lime-500 to-lime-500 group-hover:from-cyan-500 group-hover:to-primary hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
+          className="absolute m-1 p-1 inline-flex items-center whitespace-nowrap justify-center mb-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-lime-500 to-lime-500 group-hover:from-cyan-500 group-hover:to-primary hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
           type="submit"
           onClick={handleLogout}
         >
-          <span className="relative p-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-            Log Out
-          </span>
+          <FiLogOut className="text-xl" />
+          <span className="">Logout</span>
         </button>
       </div>
     );

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faSignInAlt, faUserPlus, faCar } from '@fortawesome/free-solid-svg-icons';
 import { TOKENKEY } from '../util/auth';
 import '../styles/style.css';
 
@@ -32,9 +32,11 @@ function WelcomePage() {
           { isLoggedIn ? (
             <Link
               to="/cars"
-              className="bg-primary hover:bg-lime-400 hover:text-gray-500 text-white px-2 rounded-e-full p-1 md:ps-6 text-sm items-end"
+              className="bg-primary hover:bg-lime-400 hover:text-white text-black px-6 rounded-full p-1 text-sm items-end"
             >
-              See Cars
+              <FontAwesomeIcon icon={faCar} />
+              {' '}
+              See Available Cars
             </Link>
           ) : (
             <>
