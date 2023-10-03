@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -43,10 +44,10 @@ function AddCarPage() {
   };
 
   const handleModelChange = (e) => {
-    const modelId = e.target.value;
+    const model_id = e.target.value;
     setFormData((prevData) => ({
       ...prevData,
-      modelId,
+      model_id,
     }));
   };
 

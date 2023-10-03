@@ -77,7 +77,7 @@ export const addCar = createAsyncThunk(
   async (car) => {
     const response = await axios.post(baseUrl, car, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem(TOKENKEY)}`,
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY))}`,
       },
     });
     return response.data;
@@ -89,7 +89,7 @@ export const deleteCar = createAsyncThunk(
   async (id) => {
     await axios.delete(`${baseUrl}/${id}`, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem(TOKENKEY)}`,
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY))}`,
       },
     });
     return id;
