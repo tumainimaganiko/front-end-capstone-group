@@ -27,11 +27,11 @@ function Reservations() {
         <tbody>
           {reservations && reservations.map((reservation) => (
             <tr key={reservation.id}>
-              <td className="border border-slate-600">{reservation.rentDate}</td>
-              <td className="border border-slate-600">{reservation.returnDate}</td>
-              <td className="border border-slate-600">{reservation.city}</td>
-              <td className="border border-slate-600">{reservation.car.name}</td>
-              <td className="border border-slate-600">{reservation.amount}</td>
+              <td className="border border-slate-600">{reservation.rental_date}</td>
+              <td className="border border-slate-600">{reservation.date_return}</td>
+              <td className="border border-slate-600">{reservation.destination}</td>
+              <td className="border border-slate-600">{reservation.car_id.name}</td>
+              <td className="border border-slate-600">{reservation.payment}</td>
             </tr>
           ))}
         </tbody>
