@@ -56,11 +56,21 @@ function Slider() {
     return <p className="text-center">{error}</p>;
   }
 
-  const visibleCars = window.innerWidth >= 640
-    ? [...cars.slice(current, current + 3),
-      ...cars.slice(0, current),
-      ...cars.slice(current + 3)]
-    : cars.slice(current, current + 1);
+  if (!Array.isArray(cars) || cars.length <= 0) {
+    return <p className="text-center">No cars to display</p>;
+  }
+
+  let visibleCars = window.innerWidth >= 640 ? cars.slice(current, current + 3) : cars.slice(0, 1);
+  if (window.innerWidth >= 640) {
+    if (visibleCars.length < 3) {
+      visibleCars = [
+        ...visibleCars,
+        ...cars.slice(0, 3 - visibleCars.length),
+      ];
+    }
+  } else {
+    visibleCars = cars.slice(current, current + 1);
+  }
 
   return (
     <>
@@ -71,7 +81,7 @@ function Slider() {
               <div className="flex flex-col items-center p-4">
                 <span>
                   <span className="text-2xl font-semibold">{car.price}</span>
-                  <span className="text-sm">/day</span>
+                  <span className="text-sm">$/day</span>
                 </span>
                 <img className="mb-4 sm:w-52" src={car.image} alt="car" />
                 <h2 className="text-lg font-semibold mb-2">{car.name}</h2>
