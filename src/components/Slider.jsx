@@ -16,11 +16,11 @@ function Slider() {
   const timeout = useRef(null);
 
   const nextSlide = () => {
-    setCurrent(current === length - 1 ? 0 : current + 1);
+    setCurrent((current) => (current === length - 1 ? 0 : current + 1));
   };
 
   const prevSlide = () => {
-    setCurrent(current === 0 ? length - 1 : current - 1);
+    setCurrent((current) => (current === 0 ? length - 1 : current - 1));
   };
 
   useEffect(() => {
@@ -38,7 +38,7 @@ function Slider() {
 
   useEffect(() => {
     timeout.current = setTimeout(() => {
-      setCurrent(current === length - 1 ? 0 : current + 1);
+      setCurrent((current) => (current === length - 1 ? 0 : current + 1));
     }, 3000);
 
     return () => {
@@ -56,32 +56,36 @@ function Slider() {
     return <p className="text-center">{error}</p>;
   }
 
+  const visibleCars = window.innerWidth >= 640
+    ? [...cars.slice(current, current + 3),
+      ...cars.slice(0, current),
+      ...cars.slice(current + 3)]
+    : cars.slice(current, current + 1);
+
   return (
     <>
-      <div className="overflow-hidden">
-        <div className="flex justify-between bg-secondary items-center m-3 relative">
-          {cars.map((car, index) => (
-            <div
-              key={car.id}
-              className={`transition-opacity duration-1000 w-full ${
-                index === current ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              {index === current && (
-                <div className="flex flex-col justify-center items-center h-full">
-                  <h1 className="text-4xl text-white font-bold mb-4">{car.name}</h1>
-                  <Link
-                    to={`/Cars/${car.id}`}
-                    className="bg-white text-black px-4 py-2 rounded-full"
-                  >
-                    View Details
-                  </Link>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
+      <section className="relative flex flex-row">
+        {visibleCars.map((car) => (
+          <div className="slide active flex flex-row" key={car.id}>
+            <Link to={`/cars/${car.id}`} className="block">
+              <div className="flex flex-col items-center p-4">
+                <span>
+                  <span className="text-2xl font-semibold">{car.price}</span>
+                  <span className="text-sm">/day</span>
+                </span>
+                <img className="mb-4 sm:w-52" src={car.image} alt="car" />
+                <h2 className="text-lg font-semibold mb-2">{car.name}</h2>
+                <Link
+                  to={`/cars/${car.id}`}
+                  className="bg-primary px-3 py-1 my-4 rounded hover:bg-lime-400 text-white"
+                >
+                  Details
+                </Link>
+              </div>
+            </Link>
+          </div>
+        ))}
+      </section>
       <div className="absolute inset-y-0 left-0 flex items-center">
         <button
           type="button"
@@ -95,12 +99,11 @@ function Slider() {
         <button
           type="button"
           onClick={nextSlide}
-          className="bg-primary text-gray-200 hover:bg-lime-300 rounded-s-full p-1 md:pe-6"
+          className="bg-primary text-gray-200 hover:bg-lime-300 rounded-s-full p-1 md:pe-[0.625rem]"
         >
           <FaChevronRight className="h-4 w-4" />
         </button>
       </div>
-
     </>
   );
 }

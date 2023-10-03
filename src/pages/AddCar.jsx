@@ -32,6 +32,15 @@ function AddCarPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addCar({ car: formData }));
+    setFormData({
+      name: '',
+      plate_number: '',
+      image: '',
+      price: '',
+      status: 'true',
+      city: '',
+      model_id: '',
+    });
     // navigate('/Cars');
   };
 
