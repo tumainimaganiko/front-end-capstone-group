@@ -22,7 +22,7 @@ export const fetchCars = createAsyncThunk('cars/fetchCars', async () => {
 export const addCar = createAsyncThunk(
   'cars/addCar',
   async (car) => {
-    const response = await axios.post(baseUrl, car.car, {
+    const response = await axios.post(baseUrl, { ...car.car }, {
       headers: {
         Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY))}`,
       },
