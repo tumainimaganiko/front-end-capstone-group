@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar } from '@fortawesome/free-solid-svg-icons';
 import { addCar } from '../redux/cars/carsSlice';
@@ -10,7 +10,7 @@ import { fetchModels } from '../redux/cars/modelsSlice';
 
 function AddCarPage() {
   const dispatch = useDispatch();
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
   const models = useSelector((state) => state.models.models);
 
   const [isImageValid, setIsImageValid] = useState(true);
@@ -20,7 +20,7 @@ function AddCarPage() {
     plate_number: '',
     image: '',
     price: '',
-    status: 'true',
+    status: true,
     city: '',
     model_id: '',
   });
@@ -32,16 +32,7 @@ function AddCarPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addCar({ car: formData }));
-    setFormData({
-      name: '',
-      plate_number: '',
-      image: '',
-      price: '',
-      status: 'true',
-      city: '',
-      model_id: '',
-    });
-    // navigate('/Cars');
+    navigate('/Cars');
   };
 
   const handleInputChange = (field, value) => {
@@ -150,7 +141,7 @@ function AddCarPage() {
               type="number"
               id="pricePerDay"
               className="border border-gray-300 rounded px-3 py-2 w-full"
-              onChange={(e) => handleInputChange('price', e.target.value)}
+              onChange={(e) => handleInputChange('price', parseInt(e.target.value, 10))}
               value={formData.price}
               required
               min="0"
