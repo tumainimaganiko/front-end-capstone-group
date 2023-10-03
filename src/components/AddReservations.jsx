@@ -44,16 +44,19 @@ function AddReservations() {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      createReservation(state),
-      setState({
-        car_id: '',
-        destination: '',
-        rental_date: '',
-        date_return: '',
-      }),
-    );
+
+    // const carID = parseInt(state.car_id, 10);
+    dispatch(createReservation(state));
+    setState( prevState => ({
+      ...prevState,
+      car_id: '',
+      destination: '',
+      rental_date: '',
+      date_return: '',
+    }));
   };
+
+  console.log(state);
 
   return (
     <section className="bg-[#95BF02] fixed top-0 bottom-0 left-0 right-0 text-white">
