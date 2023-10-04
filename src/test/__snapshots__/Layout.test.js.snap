@@ -7,15 +7,6 @@ Array [
     onClick={[Function]}
     type="button"
   >
-<<<<<<< HEAD
-    <path
-      clipRule="evenodd"
-      d="M3 7a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 13a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-      fillRule="evenodd"
-    />
-  </svg>
-</button>
-=======
     <svg
       aria-hidden="true"
       className="text-[34px]"
@@ -46,5 +37,4 @@ Array [
     Login
   </button>,
 ]
->>>>>>> ft/add
 `;

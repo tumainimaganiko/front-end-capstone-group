@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render a AddCar 1`] = `
+<section
+  className="bg-[#95BF02] fixed top-0 bottom-0 left-0 right-0 text-white"
+>
+  <div
+    className="p-5 text-justify md:mx-auto md:w-1/2 md:my-[10%]"
+  >
+    <h2
+      className="text-center font-bold"
+    >
+      RESERVE A CAR TEST-RIDE
+    </h2>
+    <p
+      className="my-2 text-[9px] md:text-center"
+    >
+      There are 34 different versions of the Vespa. Today five series are in production: the classic manual transmission PX and the modern CVT transmission S: LX. GT, and GTS: We have showrooms all over the globe which some include test-riding facilities. if you wish to find out if a test-ride is available in your area, please use the selector below. London Book Now
+    </p>
+    <span
+      className="success"
+    >
+      Reservarion created Successfully
+    </span>
+    <form
+      className="md:grid grid-cols-2 gap-3"
+      onSubmit={[Function]}
+    >
+      <input
+        className="border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02]"
+        id="input-car"
+        name="destination"
+        onChange={[Function]}
+        placeholder="City"
+        type="text"
+        value=""
+      />
+      <select
+        className="border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02]"
+        id="input-car"
+        name="car_id"
+        onChange={[Function]}
+        value=""
+      >
+        <option
+          disabled={true}
+          value=""
+        >
+          --Pick a Car brand --
+        </option>
+      </select>
+      <label
+        htmlFor="start_date"
+      >
+        Start:
+        <input
+          className="border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02] w-full"
+          id="input-date"
+          name="rental_date"
+          onChange={[Function]}
+          placeholder="date time"
+          type="date"
+          value=""
+        />
+      </label>
+      <label
+        htmlFor="start_date"
+      >
+        End:
+        <input
+          className="border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02] w-full"
+          id="input-date"
+          name="date_return"
+          onChange={[Function]}
+          type="date"
+          value=""
+        />
+      </label>
+      <button
+        className="col-span-2 border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02] w-1/2 mx-auto"
+        type="submit"
+      >
+        RESERVE NOW
+      </button>
+    </form>
+  </div>
+</section>
+`;
