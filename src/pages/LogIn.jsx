@@ -108,7 +108,7 @@ function Login() {
               required
               ref={emailref}
               name="email"
-              className="text-lg rounded-md m-1 w-full"
+              className="text-lg rounded-md m-1 w-full px-2"
             />
           </div>
 
@@ -123,7 +123,7 @@ function Login() {
               }}
               value={formData.password}
               name="password"
-              className="text-lg rounded-md m-1 w-full"
+              className="text-lg rounded-md m-1 w-full px-2"
               required
             />
             <div
