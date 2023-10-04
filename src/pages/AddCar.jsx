@@ -2,16 +2,19 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar } from '@fortawesome/free-solid-svg-icons';
 import { addCar } from '../redux/cars/carsSlice';
 import { fetchModels } from '../redux/cars/modelsSlice';
+import Loader from '../components/loader/Loader';
 
 function AddCarPage() {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const models = useSelector((state) => state.models.models);
+  const isLoading = useSelector((state) => state.cars.isLoading);
+  const error = useSelector((state) => state.cars.error);
 
   const [isImageValid, setIsImageValid] = useState(true);
 
@@ -32,9 +35,23 @@ function AddCarPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addCar({ car: formData }));
-    console.log(formData);
-    // navigate('/Cars');
+    setFormData({
+      name: '',
+      plate_number: '',
+      image: '',
+      price: '',
+      status: true,
+      city: '',
+      model_id: '',
+    });
+    if (!isLoading && !error) {
+      navigate('/cars');
+    }
   };
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   const handleInputChange = (field, value) => {
     setFormData((prevData) => ({

@@ -22,7 +22,7 @@ export const fetchCars = createAsyncThunk('cars/fetchCars', async () => {
 export const addCar = createAsyncThunk(
   'cars/addCar',
   async (car) => {
-    const response = await axios.post(baseUrl, car.car, {
+    const response = await axios.post(baseUrl, { ...car.car }, {
       headers: {
         Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY))}`,
       },
@@ -69,7 +69,19 @@ const carsSlice = createSlice({
       .addCase(deleteCar.fulfilled, (state, action) => ({
         ...state,
         cars: state.cars.filter((car) => car.id !== action.payload),
-      }));
+      }))
+      .addCase(addCar.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(addCar.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
+      })
+      .addCase(addCar.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.cars.push(action.payload);
+      });
   },
 });
 
