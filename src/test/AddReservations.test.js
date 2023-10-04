@@ -8,8 +8,10 @@ import myCars from './carsData';
 
 jest.mock('axios');
 
-const reducer = (state = { reservations: { reservations: myReservations }, cars: { cars: myCars} }) => state;
-
+const reducer = (state = {
+  reservations: { reservations: myReservations },
+  cars: { cars: myCars },
+}) => state;
 const store = configureStore({ reducer });
 
 describe('Should render correctly', () => {

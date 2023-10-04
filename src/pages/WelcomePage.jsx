@@ -5,7 +5,7 @@ import { faSignInAlt, faUserPlus, faCar } from '@fortawesome/free-solid-svg-icon
 import { TOKENKEY } from '../util/auth';
 import '../styles/style.css';
 
-function WelcomePage() {
+const WelcomePage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const checkUserToken = () => {
@@ -62,6 +62,6 @@ function WelcomePage() {
       </div>
     </section>
   );
-}
+};
 
 export default WelcomePage;
