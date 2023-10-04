@@ -5,6 +5,7 @@ import { TOKENKEY } from '../../util/auth';
 const initialState = {
   reservations: [],
   isLoading: false,
+  error: '',
 };
 
 const baseUrl = 'https://car-rental-api-91yl.onrender.com/api/v1/rentals';
@@ -20,19 +21,13 @@ export const fetchReservations = createAsyncThunk('reservations/fetchReservation
 
 export const createReservation = createAsyncThunk(
   'books/createReservation',
-  async (reservationData) => {
-    try {
-      const response = await axios.post(baseUrl, reservationData, {
-        headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY))}`,
-        },
-      });
-      // thunkAPI.dispatch(fetchReservations());
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  },
+  (reservationData) => (
+    axios.post(baseUrl, reservationData, {
+      headers: {
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY))}`,
+      },
+    })
+      .then((response) => response.data)),
 );
 
 console.log(JSON.parse(localStorage.getItem(TOKENKEY)));
@@ -41,21 +36,40 @@ const reservationSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchReservations.fulfilled, (state, action) => ({
-      ...state,
-      reservations: action.payload,
-    }));
+    builder
+      .addCase(fetchReservations.pending, (state) => ({
+        ...state,
+        isLoading: true,
+      }))
 
-    builder.addCase(createReservation.pending, (state) => ({
-      ...state,
-      isLoading: true,
-    }));
+      .addCase(fetchReservations.fulfilled, (state, action) => ({
+        ...state,
+        reservations: action.payload,
+        isLoading: false,
+      }))
 
-    builder.addCase(createReservation.fulfilled, (state, action) => ({
-      ...state,
-      reservations: action.payload,
-      isLoading: false,
-    }));
+      .addCase(fetchReservations.rejected, (state, action) => ({
+        ...state,
+        error: action.error,
+        isLoading: true,
+      }))
+
+      .addCase(createReservation.pending, (state) => ({
+        ...state,
+        isLoading: true,
+      }))
+
+      .addCase(createReservation.fulfilled, (state, action) => ({
+        ...state,
+        reservations: action.payload,
+        isLoading: false,
+      }))
+
+      .addCase(createReservation.rejected, (state, action) => ({
+        ...state,
+        isLoading: true,
+        error: action.error,
+      }));
   },
 });
 
