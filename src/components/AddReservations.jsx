@@ -8,6 +8,7 @@ function AddReservations() {
   const { id } = useParams();
 
   const { cars } = useSelector((store) => store.cars);
+  const { isLoading } = useSelector((store) => store.reservations);
 
   const getCarId = () => {
     const car = cars.find((car) => car.id === Number(id));
@@ -30,7 +31,7 @@ function AddReservations() {
   const handleChange = (e) => {
     setState({
       ...state,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.name === 'car_id' ? parseInt(e.target.value, 10) : e.target.value,
     });
   };
 
@@ -45,15 +46,15 @@ function AddReservations() {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    // const carID = parseInt(state.car_id, 10);
     dispatch(createReservation(state));
-    setState( prevState => ({
-      ...prevState,
-      car_id: '',
-      destination: '',
-      rental_date: '',
-      date_return: '',
-    }));
+    if (isLoading === false) {
+      setState({
+        car_id: '',
+        destination: '',
+        rental_date: '',
+        date_return: '',
+      });
+    }
   };
 
   console.log(state);
@@ -116,7 +117,10 @@ function AddReservations() {
               onChange={handleChange}
             />
           </label>
-          <button type="submit" className="col-span-2 border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02] w-1/2 mx-auto">RESERVE NOW</button>
+          {isLoading
+            ? (<button type="button" className="col-span-2 border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02] w-1/2 mx-auto">RESERVING...</button>)
+            : (<button type="submit" className="col-span-2 border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02] w-1/2 mx-auto">RESERVE NOW</button>)}
+
         </form>
       </div>
     </section>
