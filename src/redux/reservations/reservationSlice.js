@@ -30,7 +30,6 @@ export const createReservation = createAsyncThunk(
       .then((response) => response.data)),
 );
 
-console.log(JSON.parse(localStorage.getItem(TOKENKEY)));
 const reservationSlice = createSlice({
   name: 'reservations',
   initialState,

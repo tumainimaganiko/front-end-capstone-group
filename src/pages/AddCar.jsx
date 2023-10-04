@@ -30,9 +30,7 @@ function AddCarPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
     dispatch(addCar({ car: formData }));
-    // navigate('/Cars');
   };
 
   const handleInputChange = (field, value) => {

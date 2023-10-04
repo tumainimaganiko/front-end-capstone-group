@@ -10,9 +10,13 @@ function Reservations() {
     dispatch(fetchReservations());
   }, [dispatch]);
 
+  const { isLoading } = useSelector((store) => store.reservations);
+
+  const isItLoading = isLoading ? '' : '';
   return (
-    <section className="bg-[#95BF02] fixed top-0 bottom-0 left-0 right-0">
+    <section className={`${isItLoading} bg-[#95BF02] fixed top-0 overflow-auto left-0 h-full w-full p-2`}>
       <h1 className="text-center">Reservations</h1>
+      <p className="text-center">{isLoading ? 'Fetching Reservations ....' : ''}</p>
 
       <table className="mx-auto table-auto border-collapse border border-slate-500">
         <thead>
@@ -21,7 +25,6 @@ function Reservations() {
             <th className="border border-slate-600">End Date</th>
             <th className="border border-slate-600">City</th>
             <th className="border border-slate-600">Vehicles</th>
-            <th className="border border-slate-600">Amount</th>
           </tr>
         </thead>
         <tbody>
@@ -31,7 +34,6 @@ function Reservations() {
               <td className="border border-slate-600">{reservation.date_return}</td>
               <td className="border border-slate-600">{reservation.destination}</td>
               <td className="border border-slate-600">{reservation.car_id.name}</td>
-              <td className="border border-slate-600">{reservation.payment}</td>
             </tr>
           ))}
         </tbody>

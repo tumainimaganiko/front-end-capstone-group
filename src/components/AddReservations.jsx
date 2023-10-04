@@ -57,8 +57,6 @@ function AddReservations() {
     }
   };
 
-  console.log(state);
-
   return (
     <section className="bg-[#95BF02] fixed top-0 bottom-0 left-0 right-0 text-white">
       <div className="p-5 text-justify md:mx-auto md:w-1/2 md:my-[10%]">

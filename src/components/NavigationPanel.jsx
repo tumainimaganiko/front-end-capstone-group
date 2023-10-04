@@ -25,7 +25,7 @@ function NavigationPanel() {
         <HiMenuAlt4 className="text-[34px]" />
       </button>
       {menu && (
-      <nav ref={navbarRef} className="flex z-50 flex-col border-r bg-white text-center md:text-left border-white md:w-[16%] lg:w-[15%] fixed md:absolute top-0 left-0 bottom-0 right-0">
+      <nav ref={navbarRef} className="flex z-50 flex-col border-r bg-white text-center md:text-left border-white md:w-[16%] lg:w-[15%] fixed top-0 left-0 bottom-0 right-0">
         <button type="button" onClick={removeNavPanel}>
           <HiXMark className="text-[30px]" />
         </button>
@@ -35,11 +35,7 @@ function NavigationPanel() {
             <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/">HOME</NavLink></li>
             <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/Cars">VEHICLES</NavLink></li>
             <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/reservations">RESERVATION</NavLink></li>
-            <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/reservations/:id">RESERVATION</NavLink></li>
             <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/my-reservations">MY RESERVATIONS</NavLink></li>
-            <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/">ADD CAR</NavLink></li>
-            <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/">RESERVATION</NavLink></li>
-            <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/">MY RESERVATIONS</NavLink></li>
             <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/AddCar">ADD CAR</NavLink></li>
             <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/DeleteCar">REMOVE CAR</NavLink></li>
           </ul>
