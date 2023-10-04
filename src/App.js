@@ -5,8 +5,10 @@ import LogIn from './pages/LogIn';
 import WelcomePage from './pages/WelcomePage';
 import Loader from './components/loader/Loader';
 import Layout from './components/Layout';
-import ProtectedRoutes from './components/ProtectedRoutes';
+import AddReservations from './components/AddReservations';
 import Cars from './pages/Cars';
+import Reservations from './components/Reservations';
+import ProtectedRoutes from './components/ProtectedRoutes';
 import CarDetails from './components/CarDetails';
 import AddCar from './pages/AddCar';
 import DeleteCar from './pages/DeleteCar';
@@ -16,6 +18,9 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
+          <Route path="/reservations" element={<ProtectedRoutes><AddReservations /></ProtectedRoutes>} />
+          <Route path="/reservations/:id" element={<ProtectedRoutes><AddReservations /></ProtectedRoutes>} />
+          <Route path="/my-reservations" element={<ProtectedRoutes><Reservations /></ProtectedRoutes>} />
           <Route index element={<WelcomePage />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/LogIn" element={<LogIn />} />
