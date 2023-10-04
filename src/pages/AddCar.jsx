@@ -15,8 +15,10 @@ function AddCarPage() {
   const models = useSelector((state) => state.models.models);
   const isLoading = useSelector((state) => state.cars.isLoading);
   const error = useSelector((state) => state.cars.error);
+  const cars = useSelector((state) => state.cars.cars);
 
   const [isImageValid, setIsImageValid] = useState(true);
+  const [isValidPlate, setIsValidPlate] = useState(true);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -35,16 +37,16 @@ function AddCarPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addCar({ car: formData }));
-    setFormData({
-      name: '',
-      plate_number: '',
-      image: '',
-      price: '',
-      status: true,
-      city: '',
-      model_id: '',
-    });
     if (!isLoading && !error) {
+      setFormData({
+        name: '',
+        plate_number: '',
+        image: '',
+        price: '',
+        status: true,
+        city: '',
+        model_id: '',
+      });
       navigate('/cars');
     }
   };
@@ -66,6 +68,20 @@ function AddCarPage() {
       ...prevData,
       model_id,
     }));
+  };
+
+  const validatePlate = () => {
+    const plate = formData.plate_number;
+    const car = cars.find((car) => car.plate_number === plate);
+    if (car) {
+      setIsValidPlate(false);
+    } else {
+      setIsValidPlate(true);
+    }
+  };
+
+  const handlePlateBlur = () => {
+    validatePlate();
   };
 
   const validateImage = () => {
@@ -123,12 +139,18 @@ function AddCarPage() {
             </label>
             <input
               type="text"
-              id="carDetails"
-              className="border border-gray-300 rounded w-full"
+              id="plate_number"
+              className={`border border-gray-300 rounded w-full ${
+                !isValidPlate ? 'border-red-500' : ''
+              }`}
               onChange={(e) => handleInputChange('plate_number', e.target.value)}
+              onBlur={handlePlateBlur}
               value={formData.plate_number}
               required
             />
+            {!isValidPlate && (
+              <p className="text-red-500 text-sm">The plate number should be unique</p>
+            )}
           </div>
 
           <div className="mb-4">
@@ -179,6 +201,8 @@ function AddCarPage() {
               required
             />
           </div>
+
+          {error && <p className="text-red-500 text-sm">{error}</p>}
 
           <button
             type="submit"
