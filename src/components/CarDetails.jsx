@@ -14,27 +14,29 @@ function CarDetails() {
   const car = cars.find((car) => car.id === Number(id));
   const dispatch = useDispatch();
   const models = useSelector((state) => state.models.models);
-  const model = models.find((model) => model.id === Number(car.model_id));
+  const model = models.find((model) => model.id === car.model_id);
 
   useEffect(() => {
     dispatch(fetchCars());
     dispatch(fetchModels());
   }, [dispatch]);
 
-  if (!car) {
+  if (!car || !model) {
     return <Loader />;
   }
 
   return (
     <div className="bg-white shadow-md p-4 md:flex-col sm:h-screen">
-      <h2 className="text-xl font-semibold text-center sm:text-end sm:me-24 mt-2">{car.name}</h2>
+      <h2 className="text-xl font-semibold text-center sm:text-end sm:me-24 mt-6">
+        {car.name}
+      </h2>
       <div className="mt-4 flex flex-col sm:flex-row">
         <img
           src={car.image}
           alt={car.name}
           className=" sm:w-80 sm:h-80 w-56 h-56 object-contain mx-auto"
         />
-        <div className="flex-row ">
+        <div className="flex-row me-5 ">
           <div className="bg-gray-50 mt-2 flex items-center justify-center">
             <table className="w-60 border-collapse border-black text-sm items-center">
               <tbody>
@@ -61,7 +63,9 @@ function CarDetails() {
                 </tr>
                 <tr className="py-1">
                   <td className="p-2">Status:</td>
-                  <td className="p-2 pe-3 text-right">{car.status ? 'Available' : 'Unavailable'}</td>
+                  <td className="p-2 pe-3 text-right">
+                    {car.status ? 'Available' : 'Unavailable'}
+                  </td>
                 </tr>
               </tbody>
             </table>

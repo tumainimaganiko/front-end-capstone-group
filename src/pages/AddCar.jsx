@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar } from '@fortawesome/free-solid-svg-icons';
 import { addCar } from '../redux/cars/carsSlice';
@@ -10,7 +10,7 @@ import { fetchModels } from '../redux/cars/modelsSlice';
 
 function AddCarPage() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const models = useSelector((state) => state.models.models);
 
   const [isImageValid, setIsImageValid] = useState(true);
@@ -32,7 +32,8 @@ function AddCarPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addCar({ car: formData }));
-    navigate('/Cars');
+    console.log(formData);
+    // navigate('/Cars');
   };
 
   const handleInputChange = (field, value) => {
