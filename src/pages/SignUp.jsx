@@ -15,10 +15,10 @@ import '../styles/style.css';
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const EMAIL_REGEX = /^[A-z0-9-_]+@[A-z0-9-_]+\.[A-z0-9-_]+$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const PHONE_REGEX = /^\d{3}-\d{3}-\d{4}$/;
+const PHONE_REGEX = /^(\+\d{1,3}\s?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
 const REGISTER_URL = 'https://car-rental-api-91yl.onrender.com/api/v1/users';
 
-function SignUp() {
+const SignUp = () => {
   const userRef = useRef();
   const errRef = useRef();
 
@@ -89,7 +89,6 @@ function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // if button enabled with JS hack
     const v1 = USER_REGEX.test(user);
     const v2 = PWD_REGEX.test(pwd);
     const v3 = EMAIL_REGEX.test(email);
@@ -100,12 +99,7 @@ function SignUp() {
     }
     try {
       const response = await axios.post(REGISTER_URL, formData);
-      // console.log(response?.data);
-      // console.log(response?.accessToken);
-      // console.log(JSON.stringify(response));
       setSuccess(true);
-      // clear state and controlled inputs
-      // need value attrib on inputs for this
       setUser('');
       setEmail('');
       setPhone('');
@@ -141,7 +135,7 @@ function SignUp() {
       </p>
       <h1 className="text-xl">Register</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">
+        <label htmlFor="username" className="flex justify-start items-center mt-">
           Username:
           {validName && <FontAwesomeIcon icon={faCheck} className="valid" />}
           {!validName && user && (
@@ -160,6 +154,7 @@ function SignUp() {
           aria-describedby="uidnote"
           onFocus={() => setUserFocus(true)}
           onBlur={() => setUserFocus(false)}
+          className="text-lg rounded-md m-1 w-full"
         />
         <p
           id="uidnote"
@@ -175,7 +170,7 @@ function SignUp() {
           Letters, numbers, underscores, hyphens allowed.
         </p>
 
-        <label htmlFor="email">
+        <label htmlFor="email" className="flex justify-start items-center mt-1">
           Email:
           {validEmail && <FontAwesomeIcon icon={faCheck} className="valid" />}
           {!validEmail && email && (
@@ -193,6 +188,7 @@ function SignUp() {
           aria-describedby="emailnote"
           onFocus={() => setEmailFocus(true)}
           onBlur={() => setEmailFocus(false)}
+          className="text-lg rounded-md m-1 w-full"
         />
         <p
           id="emailnote"
@@ -204,7 +200,7 @@ function SignUp() {
           Must be a valid email address.
         </p>
 
-        <label htmlFor="phone">
+        <label htmlFor="phone" className="flex justify-start items-center mt-1">
           Phone:
           {validPhone && <FontAwesomeIcon icon={faCheck} className="valid" />}
           {!validPhone && phone && (
@@ -222,6 +218,7 @@ function SignUp() {
           aria-describedby="phonenote"
           onFocus={() => setPhoneFocus(true)}
           onBlur={() => setPhoneFocus(false)}
+          className="text-lg rounded-md m-1 w-full"
         />
         <p
           id="phonenote"
@@ -231,11 +228,9 @@ function SignUp() {
         >
           <FontAwesomeIcon icon={faInfoCircle} />
           Must be a valid phone number.
-          <br />
-          Format: 123-456-7890
         </p>
 
-        <label htmlFor="password">
+        <label htmlFor="password" className="flex justify-start items-center mt-1">
           Password:
           {validPwd && <FontAwesomeIcon icon={faCheck} className="valid" />}
           {!validPwd && pwd && (
@@ -253,6 +248,7 @@ function SignUp() {
             aria-describedby="pwdnote"
             onFocus={() => setPwdFocus(true)}
             onBlur={() => setPwdFocus(false)}
+            className="text-lg rounded-md m-1 w-full"
           />
           <div
             className="password-toggle"
@@ -295,7 +291,7 @@ function SignUp() {
           <span aria-label="percent">%</span>
         </p>
 
-        <label htmlFor="confirm_pwd">
+        <label htmlFor="confirm_pwd" className="flex justify-start items-center mt-1">
           Confirm Password:
           {validMatch && <FontAwesomeIcon icon={faCheck} className="valid" />}
           {!validMatch && matchPwd && (
@@ -312,6 +308,7 @@ function SignUp() {
           aria-describedby="confirmnote"
           onFocus={() => setMatchFocus(true)}
           onBlur={() => setMatchFocus(false)}
+          className="text-lg rounded-md m-1 w-full"
         />
         <p
           id="confirmnote"
@@ -340,6 +337,6 @@ function SignUp() {
       </p>
     </section>
   );
-}
+};
 
 export default SignUp;

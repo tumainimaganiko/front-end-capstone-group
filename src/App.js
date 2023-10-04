@@ -10,6 +10,8 @@ import Cars from './pages/Cars';
 import Reservations from './components/Reservations';
 import ProtectedRoutes from './components/ProtectedRoutes';
 import CarDetails from './components/CarDetails';
+import AddCar from './pages/AddCar';
+import DeleteCar from './pages/DeleteCar';
 
 function App() {
   return (
@@ -23,9 +25,10 @@ function App() {
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/LogIn" element={<LogIn />} />
           <Route path="/Loader" element={<Loader />} />
-          <Route path="/Cars" element={<ProtectedRoutes><Cars /></ProtectedRoutes>} />
+          <Route path="/Cars" element={<Cars />} />
           <Route path="/Cars/:id" element={<ProtectedRoutes><CarDetails /></ProtectedRoutes>} />
-
+          <Route path="/AddCar" element={<ProtectedRoutes><AddCar /></ProtectedRoutes>} />
+          <Route path="/DeleteCar" element={<ProtectedRoutes><DeleteCar /></ProtectedRoutes>} />
         </Route>
       </Routes>
     </Router>

@@ -42,18 +42,23 @@ html {
   text-align: center;
 }
 
+.my-height {
+  height: 100vh;
+  background-color: #95bf02;
+}
+
 .log-section {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
+  width: 90%;
   max-width: 420px;
   min-height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1rem;
+  padding: 1.5rem;
   background-color: #49a92780;
   border-radius: 0.5rem;
 }

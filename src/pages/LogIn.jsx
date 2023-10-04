@@ -9,7 +9,7 @@ import '../styles/style.css';
 
 const LOGIN_URL = 'https://car-rental-api-91yl.onrender.com/users/tokens/sign_in';
 
-function Login() {
+const Login = () => {
   const emailref = useRef();
   const errRef = useRef();
 
@@ -96,7 +96,7 @@ function Login() {
         <h1 className="text-xl">Sign In</h1>
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email" className="flex justify-start items-center mt-2">Email:</label>
             <input
               type="email"
               id="email"
@@ -108,10 +108,11 @@ function Login() {
               required
               ref={emailref}
               name="email"
+              className="text-lg rounded-md m-1 w-full px-2"
             />
           </div>
 
-          <label htmlFor="pwd">Password:</label>
+          <label htmlFor="pwd" className="flex justify-start items-center mt-2">Password:</label>
           <div className="password-input">
             <input
               type={showPwd ? 'text' : 'password'}
@@ -122,6 +123,7 @@ function Login() {
               }}
               value={formData.password}
               name="password"
+              className="text-lg rounded-md m-1 w-full px-2"
               required
             />
             <div
@@ -152,5 +154,6 @@ function Login() {
       </section>
     )
   );
-}
+};
+
 export default Login;
