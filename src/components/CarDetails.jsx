@@ -8,7 +8,7 @@ import Loader from './loader/Loader';
 import { fetchModels } from '../redux/cars/modelsSlice';
 import { fetchCars } from '../redux/cars/carsSlice';
 
-function CarDetails() {
+const CarDetails = () => {
   const { id } = useParams();
   const cars = useSelector((state) => state.cars.cars);
   const car = cars.find((car) => car.id === Number(id));
@@ -94,6 +94,6 @@ function CarDetails() {
       </Link>
     </div>
   );
-}
+};
 
 export default CarDetails;

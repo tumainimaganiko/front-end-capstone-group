@@ -18,7 +18,7 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const PHONE_REGEX = /^(\+\d{1,3}\s?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
 const REGISTER_URL = 'https://car-rental-api-91yl.onrender.com/api/v1/users';
 
-function SignUp() {
+const SignUp = () => {
   const userRef = useRef();
   const errRef = useRef();
 
@@ -89,7 +89,6 @@ function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // if button enabled with JS hack
     const v1 = USER_REGEX.test(user);
     const v2 = PWD_REGEX.test(pwd);
     const v3 = EMAIL_REGEX.test(email);
@@ -100,12 +99,7 @@ function SignUp() {
     }
     try {
       const response = await axios.post(REGISTER_URL, formData);
-      // console.log(response?.data);
-      // console.log(response?.accessToken);
-      // console.log(JSON.stringify(response));
       setSuccess(true);
-      // clear state and controlled inputs
-      // need value attrib on inputs for this
       setUser('');
       setEmail('');
       setPhone('');
@@ -343,6 +337,6 @@ function SignUp() {
       </p>
     </section>
   );
-}
+};
 
 export default SignUp;

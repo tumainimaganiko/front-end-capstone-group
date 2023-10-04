@@ -6,7 +6,7 @@ import axios from 'axios';
 import Loader from './loader/Loader';
 import { setCars } from '../redux/cars/carsSlice';
 
-function Slider() {
+const Slider = () => {
   const dispatch = useDispatch();
   const cars = useSelector((state) => state.cars.cars);
   const [isLoading, setIsLoading] = useState(true);
@@ -116,6 +116,6 @@ function Slider() {
       </div>
     </>
   );
-}
+};
 
 export default Slider;

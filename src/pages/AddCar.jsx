@@ -1,5 +1,3 @@
-/* eslint-disable camelcase */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -9,7 +7,7 @@ import { addCar } from '../redux/cars/carsSlice';
 import { fetchModels } from '../redux/cars/modelsSlice';
 import Loader from '../components/loader/Loader';
 
-function AddCarPage() {
+const AddCarPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const models = useSelector((state) => state.models.models);
@@ -215,6 +213,6 @@ function AddCarPage() {
       </div>
     </section>
   );
-}
+};
 
 export default AddCarPage;

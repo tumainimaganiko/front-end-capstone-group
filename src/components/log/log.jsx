@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { FiLogOut } from 'react-icons/fi';
 import { destroySession, TOKENKEY } from '../../util/auth';
 
-function Log() {
+const Log = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogout = useCallback(() => {
@@ -31,6 +31,12 @@ function Log() {
       </div>
     );
   }
-}
+
+  return (
+    <button type="button" className="hidden">
+      Login
+    </button>
+  );
+};
 
 export default Log;

@@ -42,6 +42,11 @@ html {
   text-align: center;
 }
 
+.my-height {
+  height: 100vh;
+  background-color: #95BF02;
+}
+
 .log-section {
   position: absolute;
   top: 50%;

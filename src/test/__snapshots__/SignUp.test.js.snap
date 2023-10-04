@@ -1,0 +1,417 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render a Login 1`] = `
+<section
+  className="log-section"
+>
+  <p
+    aria-live="assertive"
+    className="offscreen"
+  />
+  <h1
+    className="text-xl"
+  >
+    Sign In
+  </h1>
+  <form
+    onSubmit={[Function]}
+  >
+    <div>
+      <label
+        className="flex justify-start items-center mt-2"
+        htmlFor="email"
+      >
+        Email:
+      </label>
+      <input
+        className="text-lg rounded-md m-1 w-full px-2"
+        id="email"
+        name="email"
+        onChange={[Function]}
+        required={true}
+        type="email"
+        value=""
+      />
+    </div>
+    <label
+      className="flex justify-start items-center mt-2"
+      htmlFor="pwd"
+    >
+      Password:
+    </label>
+    <div
+      className="password-input"
+    >
+      <input
+        className="text-lg rounded-md m-1 w-full px-2"
+        id="pwd"
+        name="password"
+        onChange={[Function]}
+        required={true}
+        type="password"
+        value=""
+      />
+      <div
+        className="password-toggle"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        tabIndex={0}
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 640 512"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M320 400c-75.85 0-137.25-58.71-142.9-133.11L72.2 185.82c-13.79 17.3-26.48 35.59-36.72 55.59a32.35 32.35 0 0 0 0 29.19C89.71 376.41 197.07 448 320 448c26.91 0 52.87-4 77.89-10.46L346 397.39a144.13 144.13 0 0 1-26 2.61zm313.82 58.1l-110.55-85.44a331.25 331.25 0 0 0 81.25-102.07 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64a308.15 308.15 0 0 0-147.32 37.7L45.46 3.37A16 16 0 0 0 23 6.18L3.37 31.45A16 16 0 0 0 6.18 53.9l588.36 454.73a16 16 0 0 0 22.46-2.81l19.64-25.27a16 16 0 0 0-2.82-22.45zm-183.72-142l-39.3-30.38A94.75 94.75 0 0 0 416 256a94.76 94.76 0 0 0-121.31-92.21A47.65 47.65 0 0 1 304 192a46.64 46.64 0 0 1-1.54 10l-73.61-56.89A142.31 142.31 0 0 1 320 112a143.92 143.92 0 0 1 144 144c0 21.63-5.29 41.79-13.9 60.11z"
+          />
+        </svg>
+      </div>
+    </div>
+    <button
+      className="bg-innactiveBtn mt-3 text-yellow-50  rounded-lg mx-1"
+      type="submit"
+    >
+      Sign In
+    </button>
+  </form>
+  <p>
+    Need an Account?
+    <br />
+    <span
+      className="line bg-secondary px-2 rounded-lg"
+    >
+      <a
+        href="/SignUp"
+      >
+        Sign Up
+      </a>
+    </span>
+  </p>
+</section>
+`;
+
+exports[`Should render correctly It should render a SignUp 1`] = `
+<section
+  className="log-section"
+>
+  <p
+    aria-live="assertive"
+    className="offscreen"
+  />
+  <h1
+    className="text-xl"
+  >
+    Register
+  </h1>
+  <form
+    onSubmit={[Function]}
+  >
+    <label
+      className="flex justify-start items-center mt-"
+      htmlFor="username"
+    >
+      Username:
+    </label>
+    <input
+      aria-describedby="uidnote"
+      aria-invalid="true"
+      autoComplete="off"
+      className="text-lg rounded-md m-1 w-full"
+      id="username"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      required={true}
+      type="text"
+      value=""
+    />
+    <p
+      className="offscreen"
+      id="uidnote"
+    >
+      <svg
+        aria-hidden="true"
+        className="svg-inline--fa fa-circle-info "
+        data-icon="circle-info"
+        data-prefix="fas"
+        focusable="false"
+        role="img"
+        style={Object {}}
+        viewBox="0 0 512 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
+          fill="currentColor"
+          style={Object {}}
+        />
+      </svg>
+      4 to 24 characters.
+      <br />
+      Must begin with a letter.
+      <br />
+      Letters, numbers, underscores, hyphens allowed.
+    </p>
+    <label
+      className="flex justify-start items-center mt-1"
+      htmlFor="email"
+    >
+      Email:
+    </label>
+    <input
+      aria-describedby="emailnote"
+      aria-invalid="true"
+      autoComplete="off"
+      className="text-lg rounded-md m-1 w-full"
+      id="email"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      required={true}
+      type="email"
+      value=""
+    />
+    <p
+      className="offscreen"
+      id="emailnote"
+    >
+      <svg
+        aria-hidden="true"
+        className="svg-inline--fa fa-circle-info "
+        data-icon="circle-info"
+        data-prefix="fas"
+        focusable="false"
+        role="img"
+        style={Object {}}
+        viewBox="0 0 512 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
+          fill="currentColor"
+          style={Object {}}
+        />
+      </svg>
+      Must be a valid email address.
+    </p>
+    <label
+      className="flex justify-start items-center mt-1"
+      htmlFor="phone"
+    >
+      Phone:
+    </label>
+    <input
+      aria-describedby="phonenote"
+      aria-invalid="true"
+      autoComplete="off"
+      className="text-lg rounded-md m-1 w-full"
+      id="phone"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      required={true}
+      type="tel"
+      value=""
+    />
+    <p
+      className="offscreen"
+      id="phonenote"
+    >
+      <svg
+        aria-hidden="true"
+        className="svg-inline--fa fa-circle-info "
+        data-icon="circle-info"
+        data-prefix="fas"
+        focusable="false"
+        role="img"
+        style={Object {}}
+        viewBox="0 0 512 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
+          fill="currentColor"
+          style={Object {}}
+        />
+      </svg>
+      Must be a valid phone number.
+    </p>
+    <label
+      className="flex justify-start items-center mt-1"
+      htmlFor="password"
+    >
+      Password:
+    </label>
+    <div
+      className="password-input"
+    >
+      <input
+        aria-describedby="pwdnote"
+        aria-invalid="true"
+        className="text-lg rounded-md m-1 w-full"
+        id="password"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        required={true}
+        type="password"
+        value=""
+      />
+      <div
+        className="password-toggle"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        tabIndex={0}
+      >
+        <svg
+          aria-hidden="true"
+          className="svg-inline--fa fa-eye-slash "
+          data-icon="eye-slash"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          style={Object {}}
+          viewBox="0 0 640 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c8.4-19.3 10.6-41.4 4.8-63.3c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zM373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5L373 389.9z"
+            fill="currentColor"
+            style={Object {}}
+          />
+        </svg>
+      </div>
+    </div>
+    <p
+      className="offscreen"
+      id="pwdnote"
+    >
+      <svg
+        aria-hidden="true"
+        className="svg-inline--fa fa-circle-info "
+        data-icon="circle-info"
+        data-prefix="fas"
+        focusable="false"
+        role="img"
+        style={Object {}}
+        viewBox="0 0 512 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
+          fill="currentColor"
+          style={Object {}}
+        />
+      </svg>
+      8 to 24 characters.
+      <br />
+      Must include uppercase and lowercase letters, a number and a special character.
+      <br />
+      Allowed special characters:
+       
+      <span
+        aria-label="exclamation mark"
+      >
+        !
+      </span>
+       
+      <span
+        aria-label="at symbol"
+      >
+        @
+      </span>
+       
+      <span
+        aria-label="hashtag"
+      >
+        #
+      </span>
+       
+      <span
+        aria-label="dollar sign"
+      >
+        $
+      </span>
+       
+      <span
+        aria-label="percent"
+      >
+        %
+      </span>
+    </p>
+    <label
+      className="flex justify-start items-center mt-1"
+      htmlFor="confirm_pwd"
+    >
+      Confirm Password:
+    </label>
+    <input
+      aria-describedby="confirmnote"
+      aria-invalid="true"
+      className="text-lg rounded-md m-1 w-full"
+      id="confirm_pwd"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      required={true}
+      type="password"
+      value=""
+    />
+    <p
+      className="offscreen"
+      id="confirmnote"
+    >
+      <svg
+        aria-hidden="true"
+        className="svg-inline--fa fa-circle-info "
+        data-icon="circle-info"
+        data-prefix="fas"
+        focusable="false"
+        role="img"
+        style={Object {}}
+        viewBox="0 0 512 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
+          fill="currentColor"
+          style={Object {}}
+        />
+      </svg>
+      Must match the first password input field.
+    </p>
+    <button
+      className="bg-innactiveBtn mt-3 mx-1 text-yellow-50  rounded-lg"
+      disabled={true}
+      type="submit"
+    >
+      Sign Up
+    </button>
+  </form>
+  <p>
+    Already registered?
+    <br />
+    <span
+      className="line  bg-secondary px-2 rounded-lg"
+    >
+      <a
+        href="/LogIn"
+      >
+        Sign In
+      </a>
+    </span>
+  </p>
+</section>
+`;

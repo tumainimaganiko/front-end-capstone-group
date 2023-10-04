@@ -9,7 +9,7 @@ import '../styles/style.css';
 
 const LOGIN_URL = 'https://car-rental-api-91yl.onrender.com/users/tokens/sign_in';
 
-function Login() {
+const Login = () => {
   const emailref = useRef();
   const errRef = useRef();
 
@@ -154,5 +154,6 @@ function Login() {
       </section>
     )
   );
-}
+};
+
 export default Login;

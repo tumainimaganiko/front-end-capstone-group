@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteCar, fetchCars } from '../redux/cars/carsSlice';
 import Loader from '../components/loader/Loader';
 
-function DeleteCar({ car }) {
+const DeleteCar = ({ car }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
@@ -31,9 +31,9 @@ function DeleteCar({ car }) {
       </div>
     </section>
   );
-}
+};
 
-function CarList() {
+const CarList = () => {
   const dispatch = useDispatch();
   const cars = useSelector((state) => state.cars.cars);
   const isLoading = useSelector((state) => state.cars.isLoading);
@@ -53,7 +53,7 @@ function CarList() {
       ))}
     </div>
   );
-}
+};
 
 export default CarList;
 
