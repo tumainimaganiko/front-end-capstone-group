@@ -71,7 +71,7 @@ const CarDetails = () => {
             </table>
           </div>
           <Link
-            to={car.status ? '/reservation' : '#'}
+            to={car.status ? '/reservations' : '#'}
             className={`bg-primary hover:bg-lime-400 hover:text-gray-500 text-white mt-4 p-2 m-1 rounded-lg text-sm flex mx-auto items-center justify-center max-w-fit ${
               !car.status ? 'opacity-50 cursor-not-allowed' : ''
             }`}
