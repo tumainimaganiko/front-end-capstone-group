@@ -32,7 +32,7 @@ const CarDetails = () => {
       </h2>
       <div className="mt-4 flex flex-col sm:flex-row">
         <img
-          src={car.image}
+          src={car.image_url}
           alt={car.name}
           className=" sm:w-80 sm:h-80 w-56 h-56 object-contain mx-auto"
         />
@@ -71,7 +71,7 @@ const CarDetails = () => {
             </table>
           </div>
           <Link
-            to={car.status ? '/reservation' : '#'}
+            to={car.status ? `/reservations/${car.id}` : '#'}
             className={`bg-primary hover:bg-lime-400 hover:text-gray-500 text-white mt-4 p-2 m-1 rounded-lg text-sm flex mx-auto items-center justify-center max-w-fit ${
               !car.status ? 'opacity-50 cursor-not-allowed' : ''
             }`}

@@ -17,7 +17,7 @@ const DeleteCar = ({ car }) => {
   return (
     <section className="text-gray-600 body-font pt-4">
       <div className="bg-gray-200 bg-opacity-50 p-2 rounded-lg shadow-lg flex flex-row sm:flex-col items-center justify-between text-center">
-        <img src={car.image} alt={car.name} className="sm:w-40 w-16 rounded-full mb-2" />
+        <img src={car.image_url} alt={car.name} className="sm:w-40 w-16 rounded-full mb-2" />
         <p className="sm:text-xl text-sm font-semibold mb-2 mx-3">{car.name}</p>
         <div className="flex items-center sm:space-x-4">
           <button
@@ -62,6 +62,6 @@ DeleteCar.propTypes = {
     id: propTypes.number,
     name: propTypes.string,
     details: propTypes.string,
-    image: propTypes.string,
+    image_url: propTypes.string,
   }).isRequired,
 };

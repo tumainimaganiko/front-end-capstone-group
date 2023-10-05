@@ -83,7 +83,7 @@ const Slider = () => {
                   <span className="text-2xl font-semibold">{car.price}</span>
                   <span className="text-sm">$/day</span>
                 </span>
-                <img className="mb-4 sm:w-52" src={car.image} alt="car" />
+                <img className="mb-4 sm:w-52 max-h-28" src={car.image_url} alt="car" />
                 <h2 className="text-lg font-semibold mb-2">{car.name}</h2>
                 <Link
                   to={`/cars/${car.id}`}

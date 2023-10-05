@@ -21,7 +21,7 @@ const AddCarPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     plate_number: '',
-    image: '',
+    image: null,
     price: '',
     status: true,
     city: '',
@@ -34,12 +34,24 @@ const AddCarPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addCar({ car: formData }));
+    const data = new FormData();
+    const {
+      name, plate_number, image, price, city, model_id,
+    } = formData;
+    data.append('name', name);
+    data.append('plate_number', plate_number);
+    data.append('image', e.target.image.files[0]);
+    data.append('price', price);
+    data.append('city', city);
+    data.append('model_id', model_id);
+    data.append('status', true);
+    console.log(name, plate_number, image, price, city, model_id);
+    dispatch(addCar({ car: data }));
     if (!isLoading && !error) {
       setFormData({
         name: '',
         plate_number: '',
-        image: '',
+        image: null,
         price: '',
         status: true,
         city: '',
@@ -68,6 +80,13 @@ const AddCarPage = () => {
     }));
   };
 
+  const handleImageChange = (field, file) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [field]: file,
+    }));
+  };
+
   const validatePlate = () => {
     const plate = formData.plate_number;
     const car = cars.find((car) => car.plate_number === plate);
@@ -83,10 +102,12 @@ const AddCarPage = () => {
   };
 
   const validateImage = () => {
-    const img = new Image();
-    img.onload = () => setIsImageValid(true);
-    img.onerror = () => setIsImageValid(false);
-    img.src = formData.image;
+    console.log(formData);
+    if (formData.image !== null && formData.image.type.startsWith('image/')) {
+      setIsImageValid(true);
+    } else {
+      setIsImageValid(false);
+    }
   };
   const handleImageBlur = () => {
     validateImage();
@@ -138,9 +159,7 @@ const AddCarPage = () => {
             <input
               type="text"
               id="plate_number"
-              className={`border border-gray-300 rounded w-full ${
-                !isValidPlate ? 'border-red-500' : ''
-              }`}
+              className={`border border-gray-300 rounded w-full ${!isValidPlate ? 'border-red-500' : ''}`}
               onChange={(e) => handleInputChange('plate_number', e.target.value)}
               onBlur={handlePlateBlur}
               value={formData.plate_number}
@@ -153,9 +172,9 @@ const AddCarPage = () => {
 
           <div className="mb-4">
             <label htmlFor="carPhoto" className="block font-medium">
-              Car Photo (URL):
+              Car Photo:
             </label>
-            <input
+            {/* <input
               type="url"
               id="carPhoto"
               className={`border border-gray-300 rounded w-full ${
@@ -165,9 +184,19 @@ const AddCarPage = () => {
               onBlur={handleImageBlur}
               value={formData.image}
               required
+            /> */}
+            <input
+              type="file"
+              id="carPhoto"
+              name="image"
+              className={`border border-gray-300 rounded w-full ${!isImageValid ? 'border-red-500' : ''}`}
+              onChange={(e) => handleImageChange('image', e.target.files[0])}
+              onBlur={handleImageBlur}
+              // value={formData.image}
+              required
             />
             {!isImageValid && (
-              <p className="text-red-500 text-sm">Please enter a valid image URL.</p>
+              <p className="text-red-500 text-sm">Please enter a valid image.</p>
             )}
           </div>
 
