@@ -55,7 +55,10 @@ exports[`Render a AddCar 1`] = `
         Start:
         <input
           className="border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02] w-full"
+          disabled={false}
           id="input-date"
+          max=""
+          min="2023-10-05"
           name="rental_date"
           onChange={[Function]}
           placeholder="date time"
@@ -69,7 +72,9 @@ exports[`Render a AddCar 1`] = `
         End:
         <input
           className="border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02] w-full"
+          disabled={false}
           id="input-date"
+          min=""
           name="date_return"
           onChange={[Function]}
           type="date"
