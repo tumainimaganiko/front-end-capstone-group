@@ -12,7 +12,7 @@ const reducer = (state = { reservations: { reservations: myReservations } }) => 
 const store = configureStore({ reducer });
 
 describe('Should render correctly', () => {
-  it('It should get all reservations loaded', async () => {
+  it('It should render Reservations', async () => {
     axios.get.mockResolvedValue({ data: myReservations });
     const tree = renderer
       .create(

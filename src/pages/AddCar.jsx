@@ -36,7 +36,7 @@ const AddCarPage = () => {
     e.preventDefault();
     const data = new FormData();
     const {
-      name, plate_number, image, price, city, model_id,
+      name, plate_number, price, city, model_id,
     } = formData;
     data.append('name', name);
     data.append('plate_number', plate_number);
@@ -45,7 +45,6 @@ const AddCarPage = () => {
     data.append('city', city);
     data.append('model_id', model_id);
     data.append('status', true);
-    console.log(name, plate_number, image, price, city, model_id);
     dispatch(addCar({ car: data }));
     if (!isLoading && !error) {
       setFormData({
@@ -102,7 +101,6 @@ const AddCarPage = () => {
   };
 
   const validateImage = () => {
-    console.log(formData);
     if (formData.image !== null && formData.image.type.startsWith('image/')) {
       setIsImageValid(true);
     } else {
