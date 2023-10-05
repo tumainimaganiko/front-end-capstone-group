@@ -13,7 +13,7 @@ import CarDetails from './components/CarDetails';
 import AddCar from './pages/AddCar';
 import DeleteCar from './pages/DeleteCar';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Routes>

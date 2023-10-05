@@ -13,7 +13,7 @@ import logo from '../assets/images/logo-capstone.svg';
 import useClickOutside from '../hooks/useClickOutside';
 import Log from './log/log';
 
-function NavigationPanel() {
+const NavigationPanel = () => {
   const [menu, setMenu] = useState(false);
   const navbarRef = useRef(null);
 

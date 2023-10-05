@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { createReservation } from '../redux/reservations/reservationSlice';
 import { fetchCars } from '../redux/cars/carsSlice';
 
-function AddReservations() {
+const AddReservations = () => {
   const { id } = useParams();
   const { cars } = useSelector((store) => store.cars);
   const { reservationIsLoading } = useSelector((store) => store.reservations);

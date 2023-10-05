@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchReservations } from '../redux/reservations/reservationSlice';
 
-function Reservations() {
+const Reservations = () => {
   const { reservations } = useSelector((state) => state.reservations.reservations);
   const { error } = useSelector((state) => state.reservations);
   const { cars } = useSelector((state) => state.cars);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { RingLoader } from 'react-spinners';
 
-function Loader() {
+const Loader = () => {
   return (
     <div className="flex justify-center items-center h-screen">
       <RingLoader
