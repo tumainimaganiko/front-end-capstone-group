@@ -1,70 +1,223 @@
-# Getting Started with Create React App
+<div align="center">
+  <h2><b>🕹️🕹️ Car Rental API 🕹️🕹️</b></h2>
+  <br/>
+    <img src="./src/images/carlogo.png" alt="logo" width="140"  height="auto" />
+  <br/>
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<a name="readme-top"></a>
 
-## Available Scripts
+<!-- TABLE OF CONTENTS -->
 
-In the project directory, you can run:
+# 📗 Table of Contents
 
-### `npm start`
+- [📖 About the Project](#about-project)
+  - [:camera: project screenshot](#screen-shoot)
+  - [🛠 Built With](#built-with)
+    - [Tech Stack](#tech-stack)
+    - [Key Features](#key-features)
+  - [🚀 Live Demo](#live-demo)
+  - [🚀 Kaban Board](#Kaban-Board)
+    - [Kaban Board Initial State](#initial-state)
+  - [🚀 Project Screenshot](#project-screenshot)
+- [💻 Getting Started](#getting-started)
+  - [Setup](#setup)
+  - [Prerequisites](#prerequisites)
+  - [Install](#install)
+  - [Usage](#usage)
+- [👥 Authors](#authors)
+- [🔭 Future Features](#future-features)
+- [🤝 Contributing](#contributing)
+- [⭐️ Show your support](#support)
+- [🙏 Acknowledgements](#acknowledgements)
+- [📝 License](#license)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<!-- PROJECT DESCRIPTION -->
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# 📖 [Car-Rental-app-api] <a name="about-project"></a>
 
-### `npm test`
+**[Car Rental APi]** The application is specifically designed to streamline the car rental process by providing users with a seamless experience. It empowers users to effortlessly explore a wide range of available cars, make reservations for their preferred vehicles, and conveniently customize rental details according to their needs.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Backend
 
-### `npm run build`
+The backend was made with ruby on rails and can be found [here](https://github.com/DilsherB/backend-final-capstone)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🛠 Built With <a name="built-with"> </a>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- HTML 5 , css3, javascript ES6, React , Redux and external API
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Tech Stack <a name="tech-stack"></a>
 
-### `npm run eject`
+- React, redux, axios, jest webpack, and babel
+<!-- Features -->
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Key Features <a name="key-features"></a>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **[User Registration and Authentication]**
+- **[Cars Listings]**
+- **[Booking and Reservation Management]**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<!-- Link to Api Documentation -->
 
-## Learn More
+## 🚀 Live Demo <a name="live-demo"></a>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [Live Demo](https://vehicle-company.onrender.com/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<br/>
+    <img src="./src/images/websitecap.PNG" alt="logo" width="auto"  height="auto" />
+<br/>
 
-### Code Splitting
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<!-- Link to frontend -->
 
-### Analyzing the Bundle Size
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🚀 Kaban Board <a name="Kaban-Board"></a>
 
-### Making a Progressive Web App
+- [Kaban Board](https://github.com/users/tumainimaganiko/projects/5) This is the link to the project management tool used to track the progress of the project.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Kaban Board Initial State <a name="initial-state"></a>
 
-### Advanced Configuration
+- [Kaban Board Initial State](https://github.com/tumainimaganiko/front-end-capstone-group/issues/17) This is the link to the project management tool used to track the progress of the project.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+In this team, we are 4 in number,
 
-### Deployment
+- @Racha_Ouldbabaali
+- @Tumaini_Maganiko
+- @Felix_Kamana
+- @Dilsher_Balouch
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### `npm run build` fails to minify
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<!-- GETTING STARTED -->
+
+## 💻 Getting Started <a name="getting-started"></a>
+
+To run on your localhost clone the project to a local folder
+
+### Prerequisites
+
+In order to run this project you need:
+
+- [git](https://git-scm.com/downloads): A tool for managing source code
+- [Visual Studio Code](https://code.visualstudio.com/): A source code editor
+- Have a working and updated browser
+- Have a local version control like git installed on your computer
+- A copy of the link to this Repository.
+
+````sh
+
+### Setup
+
+Clone this repository to your desired folder:
+
+```sh
+  cd my-folder
+  git clone https://github.com/tumainimaganiko/front-end-capstone-group
+````
+
+Install dependencies:
+
+```sh
+  cd front-end-final-capstone
+```
+
+### Install
+
+Install the required dependencies using the following command:
+
+```sh
+  npm install
+```
+
+### Usage
+
+Run the server using the following command:
+
+```sh
+  npm start
+```
+
+### Run tests
+
+Run this command to run a test
+
+```sh
+  npm test
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- AUTHORS -->
+
+## 👥 Authors <a name="authors"></a>
+
+👤 **Racha Ould Babaali**
+
+- GitHub: [@rachaouldbabaali](https://github.com/rachaouldbabaali)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/rachaouldbabaali/)
+
+👤 **Tumaini Maganiko**
+
+- GitHub: [@githubhandle](https://github.com/tumainimaganiko)
+- Twitter: [@twitterhandle](https://twitter.com/Chief2maini)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/tumainimaganiko/)
+
+👤 **Felix KAMANA**
+
+- GitHub: [@githubhandle](https://github.com/fezzopro)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/kamana-felix/)
+
+👤 **Dilsher Balouch**
+
+- GitHub: [@DilsherB](https://github.com/DilsherB)
+- Linkedin: [Dilsher Balouch](https://www.linkedin.com/in/dilsher-balouch/)
+- Twitter: [@\_brilliantMindz](https://twitter.com/_brilliantMindz)
+- <!-- FUTURE FEATURES -->
+
+## 🔭 Future Features <a name="future-features"></a>
+
+- [ ] **[Add Admin dashboard]**
+- [ ] **[Add payment system]**
+- [ ] **[Cancel reservation]**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTRIBUTING -->
+
+## 🤝 Contributing <a name="contributing"></a>
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- SUPPORT -->
+
+## ⭐️ Show your support <a name="support"></a>
+
+If you like this project, please don't forget to follow the contributors and give it a star.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGEMENTS -->
+
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+We would like to appreciate [Microverse](https://www.microverse.org/) for providing the resources and the platform for us to be Professional full-stack developers, and We would especially thank [Murat Korkmaz](https://www.behance.net/muratk) who is the original author of this [design](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LICENSE -->
+
+## 📝 License <a name="license"></a>
+
+This project is [MIT](./LICENSE) licensed.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
