@@ -82,7 +82,7 @@ In order to run this project you need:</br>
 ### Setup
 
 Clone this repository to your desired folder: </br>
-`git clone https://github.com/Gabriel-Leao/bookstore.git`
+`git clone https://github.com/tumainimaganiko/front-end-capstone-group.git`
 then `cd "foldername"`</br>
 
 ### Install
