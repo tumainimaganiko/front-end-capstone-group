@@ -1,7 +1,7 @@
 <div align="center">
   <h2><b>🕹️🕹️ Car Rental API 🕹️🕹️</b></h2>
   <br/>
-    <img src="./public/images/carlogo.png" alt="logo" width="140"  height="auto" />
+    <img src="./src/images/carlogo.png" alt="logo" width="140"  height="auto" />
   <br/>
 </div>
 
@@ -95,13 +95,6 @@ In this team, we are 4 in number,
 - @Dilsher_Balouch
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-## 🚀 ERD Diagram <a name="erd"></a>
-
-<br/>
-    <img src="./public/images/diagram.png" alt="logo" width="auto"  height="auto" />
-  <br/>
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
