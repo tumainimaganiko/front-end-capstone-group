@@ -47,40 +47,40 @@ function NavigationPanel() {
             <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/DeleteCar">REMOVE CAR</NavLink></li>
           </ul>
 
-            <div>
-              <ul className="flex my-4 mx-auto md:mx-0 justify-center">
-                <li className="mx-3 md:mx-[3px]">
-                  <NavLink onClick={removeNavPanel} to="/">
-                    <BiLogoTwitter />
-                  </NavLink>
-                </li>
-                <li className="mx-3 md:mx-[3px]">
-                  <NavLink onClick={removeNavPanel} to="/">
-                    <BiLogoFacebook />
-                  </NavLink>
-                </li>
-                <li className="mx-3 md:mx-[3px]">
-                  <NavLink onClick={removeNavPanel} to="/">
-                    <TfiGoogle />
-                  </NavLink>
-                </li>
-                <li className="mx-3 md:mx-[3px]">
-                  <NavLink onClick={removeNavPanel} to="/">
-                    <BiLogoInstagram />
-                  </NavLink>
-                </li>
-                <li className="mx-3 md:mx-[3px]">
-                  <NavLink onClick={removeNavPanel} to="/">
-                    <BiLogoPinterestAlt />
-                  </NavLink>
-                </li>
-              </ul>
-              <p className="text-[8px] mx-0 text-center mb-3">
-                @ 2023 PLAGGIO & CSPA - PIVA
-              </p>
-            </div>
+          <div>
+            <ul className="flex my-4 mx-auto md:mx-0 justify-center">
+              <li className="mx-3 md:mx-[3px]">
+                <NavLink onClick={removeNavPanel} to="/">
+                  <BiLogoTwitter />
+                </NavLink>
+              </li>
+              <li className="mx-3 md:mx-[3px]">
+                <NavLink onClick={removeNavPanel} to="/">
+                  <BiLogoFacebook />
+                </NavLink>
+              </li>
+              <li className="mx-3 md:mx-[3px]">
+                <NavLink onClick={removeNavPanel} to="/">
+                  <TfiGoogle />
+                </NavLink>
+              </li>
+              <li className="mx-3 md:mx-[3px]">
+                <NavLink onClick={removeNavPanel} to="/">
+                  <BiLogoInstagram />
+                </NavLink>
+              </li>
+              <li className="mx-3 md:mx-[3px]">
+                <NavLink onClick={removeNavPanel} to="/">
+                  <BiLogoPinterestAlt />
+                </NavLink>
+              </li>
+            </ul>
+            <p className="text-[8px] mx-0 text-center mb-3">
+              @ 2023 PLAGGIO & CSPA - PIVA
+            </p>
           </div>
-        </nav>
+        </div>
+      </nav>
       )}
     </>
   );
