@@ -57,6 +57,6 @@ const Reservations = () => {
       )}
     </section>
   );
-}
+};
 
 export default Reservations;

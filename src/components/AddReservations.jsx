@@ -130,5 +130,5 @@ const AddReservations = () => {
       </div>
     </section>
   );
-}
+};
 export default AddReservations;
