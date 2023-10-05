@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   faCheck,
   faTimes,
@@ -9,7 +9,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from '../api/axios';
-import { storeSession } from '../util/auth';
 import '../styles/style.css';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -45,6 +44,8 @@ const SignUp = () => {
 
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     userRef.current.focus();
@@ -98,15 +99,13 @@ const SignUp = () => {
       return;
     }
     try {
-      const response = await axios.post(REGISTER_URL, formData);
+      await axios.post(REGISTER_URL, formData);
       setSuccess(true);
       setUser('');
       setEmail('');
       setPhone('');
       setPwd('');
       setMatchPwd('');
-      // store session
-      storeSession(response?.data.resource_owner, response?.data.token);
     } catch (err) {
       if (!err?.response) {
         setErrMsg('No Server Response');
@@ -119,12 +118,7 @@ const SignUp = () => {
     }
   };
 
-  return success ? (
-    <section>
-      <h1>You are registered!</h1>
-      <Link to="/LogIn">Sign In</Link>
-    </section>
-  ) : (
+  return success ? (navigate('/LogIn')) : (
     <section className="log-section">
       <p
         ref={errRef}
