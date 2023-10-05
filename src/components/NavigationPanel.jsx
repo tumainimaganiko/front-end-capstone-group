@@ -11,6 +11,7 @@ import { TfiGoogle } from 'react-icons/tfi';
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/images/logo-capstone.svg';
 import useClickOutside from '../hooks/useClickOutside';
+import Log from './log/log';
 
 function NavigationPanel() {
   const [menu, setMenu] = useState(false);
@@ -46,6 +47,8 @@ function NavigationPanel() {
             <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/AddCar">ADD CAR</NavLink></li>
             <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/DeleteCar">REMOVE CAR</NavLink></li>
           </ul>
+
+          <Log />
 
           <div>
             <ul className="flex my-4 mx-auto md:mx-0 justify-center">

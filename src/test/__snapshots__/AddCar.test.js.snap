@@ -83,16 +83,16 @@ exports[`Render a AddCar 1`] = `
           className="block font-medium"
           htmlFor="carPhoto"
         >
-          Car Photo (URL):
+          Car Photo:
         </label>
         <input
           className="border border-gray-300 rounded w-full "
           id="carPhoto"
+          name="image"
           onBlur={[Function]}
           onChange={[Function]}
           required={true}
-          type="url"
-          value=""
+          type="file"
         />
       </div>
       <div

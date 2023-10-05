@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchReservations } from '../redux/reservations/reservationSlice';
 
 function Reservations() {
-  const { reservations } = useSelector((state) => state.reservations);
+  const { reservations } = useSelector((state) => state.reservations.reservations);
   const { error } = useSelector((state) => state.reservations);
   const { cars } = useSelector((state) => state.cars);
 

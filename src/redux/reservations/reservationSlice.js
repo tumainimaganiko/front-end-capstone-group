@@ -38,24 +38,19 @@ const reservationSlice = createSlice({
     builder
       .addCase(fetchReservations.pending, (state) => ({
         ...state,
-        reservationIsLoading: true,
-        error: [],
+        isLoading: true,
       }))
-
-      .addCase(fetchReservations.fulfilled, (state, action) => {
-        const { reservations, disabledDatesByCarId } = action.payload;
-        return {
-          ...state,
-          reservations,
-          reservedDatesByCarId: disabledDatesByCarId,
-          reservationIsLoading: false,
-        };
-      })
 
       .addCase(fetchReservations.rejected, (state, action) => ({
         ...state,
         error: action.error,
-        reservationIsLoading: false,
+        isLoading: false,
+      }))
+
+      .addCase(fetchReservations.fulfilled, (state, action) => ({
+        ...state,
+        reservations: action.payload,
+        isLoading: false,
       }))
 
       .addCase(createReservation.pending, (state) => ({

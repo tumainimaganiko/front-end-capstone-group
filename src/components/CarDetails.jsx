@@ -32,7 +32,7 @@ const CarDetails = () => {
       </h2>
       <div className="mt-4 flex flex-col sm:flex-row">
         <img
-          src={car.image}
+          src={car.image_url}
           alt={car.name}
           className=" sm:w-80 sm:h-80 w-56 h-56 object-contain mx-auto"
         />
