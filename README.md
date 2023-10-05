@@ -64,8 +64,6 @@ The backend was made with ruby on rails and can be found [here](https://github.c
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-To access the documentation, run the rails server using `rails s` and go to the above link
-
 - [Live Demo](https://vehicle-company.onrender.com/)
 
 <br/>
