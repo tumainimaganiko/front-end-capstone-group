@@ -1,7 +1,8 @@
+/* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { createReservation } from '../redux/reservations/reservationSlice';
+import { createReservation, fetchReservations } from '../redux/reservations/reservationSlice';
 import { fetchCars } from '../redux/cars/carsSlice';
 
 function AddReservations() {
@@ -14,7 +15,8 @@ function AddReservations() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchCars());
-  }, [dispatch]);
+    dispatch(fetchReservations(id));
+  }, [dispatch, id]);
   const getCarId = () => {
     const car = cars.find((car) => car.id === Number(id));
     return car ? car.id : '';
@@ -26,12 +28,18 @@ function AddReservations() {
     date_return: '',
     disabledDates: [],
   });
-  const handleChange = (e) => {
-    setState({
-      ...state,
-      [e.target.name]: e.target.name === 'car_id' ? parseInt(e.target.value, 10) : e.target.value,
-    });
-  };
+  console.log(state);
+  useEffect(() => {
+    if (reservations) {
+      const disabledDates = reservations
+        .filter((reservation) => reservation.car_id === state.car_id)
+        .map((reservation) => [reservation.rental_date, reservation.date_return]);
+      setState((prevState) => ({
+        ...prevState,
+        disabledDates,
+      }));
+    }
+  }, [reservations, state.car_id]);
   const carOptions = Array.isArray(cars)
     ? cars.map((car) => (
       <option value={car.id} key={car.id}>
@@ -39,6 +47,25 @@ function AddReservations() {
       </option>
     ))
     : null;
+
+  const handleChange = (e) => {
+    if (e.target.name === 'car_id') {
+      const newCarId = parseInt(e.target.value, 10);
+      const newDisabledDates = reservations
+        .filter((reservation) => reservation.car_id === newCarId)
+        .map((reservation) => reservation.rental_date);
+      setState((prevState) => ({
+        ...prevState,
+        car_id: newCarId,
+        disabledDates: newDisabledDates,
+      }));
+    } else {
+      setState((prevState) => ({
+        ...prevState,
+        [e.target.name]: e.target.name === 'car_id' ? parseInt(e.target.value, 10) : e.target.value,
+      }));
+    }
+  };
   const handleFormSubmit = (e) => {
     e.preventDefault();
     dispatch(createReservation(state));
@@ -72,7 +99,22 @@ function AddReservations() {
             </span>
           )
           : ('')}
-        {!reservationIsLoading && reservations ? (<span className="success">Reservarion created Successfully</span>) : ''}
+        {state.disabledDates.length > 0 ? (
+          <div className="bg-red-200 text-center flex flex-col items-center justify-center text-black m-3">
+            Car is not available on the selected dates:
+            {state.disabledDates.map((date) => (
+              <ul key={date}>
+                <li>
+                  {date[0]}
+                  {' '}
+                  to
+                  {' '}
+                  {date[1]}
+                </li>
+              </ul>
+            ))}
+          </div>
+        ) : ''}
         <form onSubmit={handleFormSubmit} className="md:grid grid-cols-2 gap-3">
           <input
             type="text"
@@ -105,9 +147,8 @@ function AddReservations() {
               value={state.rental_date}
               onChange={handleChange}
               placeholder="date time"
-              min={new Date().toISOString().split('T')[0]} // Set minimum date to today
+              min={new Date().toISOString().split('T')[0]}
               max={state.date_return}
-              disabled={state.disabledDates.includes(state.rental_date)}
             />
           </label>
           <label htmlFor="start_date">
@@ -120,7 +161,6 @@ function AddReservations() {
               value={state.date_return}
               onChange={handleChange}
               min={state.rental_date} // Set minimum date to the selected start date
-              disabled={state.disabledDates.includes(state.date_return)}
             />
           </label>
           {reservationIsLoading
