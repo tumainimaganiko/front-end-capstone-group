@@ -24,6 +24,7 @@ function AddReservations() {
     destination: '',
     rental_date: '',
     date_return: '',
+    disabledDates: [],
   });
   const handleChange = (e) => {
     setState({
@@ -47,6 +48,7 @@ function AddReservations() {
         destination: '',
         rental_date: '',
         date_return: '',
+        disabledDates: [],
       });
     }
   };
@@ -103,6 +105,9 @@ function AddReservations() {
               value={state.rental_date}
               onChange={handleChange}
               placeholder="date time"
+              min={new Date().toISOString().split('T')[0]} // Set minimum date to today
+              max={state.date_return}
+              disabled={state.disabledDates.includes(state.rental_date)}
             />
           </label>
           <label htmlFor="start_date">
@@ -114,6 +119,8 @@ function AddReservations() {
               className="border rounded-3xl bg-[#95BF02] hover:bg-white hover:text-[#95BF02] w-full"
               value={state.date_return}
               onChange={handleChange}
+              min={state.rental_date} // Set minimum date to the selected start date
+              disabled={state.disabledDates.includes(state.date_return)}
             />
           </label>
           {reservationIsLoading

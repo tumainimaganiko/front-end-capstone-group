@@ -6,6 +6,7 @@ const initialState = {
   reservations: [],
   reservationIsLoading: false,
   error: [],
+  reservedDatesByCarId: {},
 };
 const baseUrl = 'https://car-rental-api-91yl.onrender.com/api/v1/rentals';
 export const fetchReservations = createAsyncThunk('reservations/fetchReservations', async () => {
@@ -14,7 +15,10 @@ export const fetchReservations = createAsyncThunk('reservations/fetchReservation
       Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY))}`,
     },
   });
-  return response.data;
+  const reservations = response.data;
+  const disabledDates = reservations.map((reservation) => reservation.rental_date);
+
+  return { reservations, disabledDates };
 });
 export const createReservation = createAsyncThunk(
   'reservations/createReservation',
@@ -38,11 +42,15 @@ const reservationSlice = createSlice({
         error: [],
       }))
 
-      .addCase(fetchReservations.fulfilled, (state, action) => ({
-        ...state,
-        reservations: [...action.payload],
-        reservationIsLoading: false,
-      }))
+      .addCase(fetchReservations.fulfilled, (state, action) => {
+        const { reservations, disabledDatesByCarId } = action.payload;
+        return {
+          ...state,
+          reservations,
+          reservedDatesByCarId: disabledDatesByCarId,
+          reservationIsLoading: false,
+        };
+      })
 
       .addCase(fetchReservations.rejected, (state, action) => ({
         ...state,
