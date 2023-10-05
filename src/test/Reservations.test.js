@@ -1,26 +1,18 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { Provider } from 'react-redux';
-import axios from 'axios';
 import renderer from 'react-test-renderer';
-import myReservations from './reservationsData';
+import { MemoryRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from '../redux/store';
 import Reservations from '../components/Reservations';
 
-jest.mock('axios');
-
-const reducer = (state = { reservations: { reservations: myReservations } }) => state;
-
-const store = configureStore({ reducer });
-
-describe('Should render correctly', () => {
-  it('It should render Reservations', async () => {
-    axios.get.mockResolvedValue({ data: myReservations });
-    const tree = renderer
-      .create(
-        <Provider store={store}>
+it('Render a DeleteCar', () => {
+  const tree = renderer
+    .create(
+      <Provider store={store}>
+        <MemoryRouter>
           <Reservations />
-        </Provider>,
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
+        </MemoryRouter>
+      </Provider>,
+    )
+    .toJSON();
+  expect(tree).toMatchSnapshot();
 });

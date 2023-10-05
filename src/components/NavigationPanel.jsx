@@ -8,7 +8,7 @@ import { TfiGoogle } from 'react-icons/tfi';
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/images/logo-capstone.svg';
 import useClickOutside from '../hooks/useClickOutside';
-import Log from './log/Log';
+import Log from './log/log';
 
 function NavigationPanel() {
   const [menu, setMenu] = useState(false);
