@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AddCar Component should render correctly 1`] = `<deleteCar />`;
-
 exports[`Render a DeleteCar 1`] = `
 <div
   className="min-h-screen bg-lime-300"
