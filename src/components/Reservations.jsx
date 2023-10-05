@@ -4,7 +4,7 @@ import { fetchReservations } from '../redux/reservations/reservationSlice';
 
 function Reservations() {
   const { reservations } = useSelector((store) => store.reservations);
-
+  const { cars } = useSelector((state) => state.cars);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchReservations());
@@ -28,14 +28,22 @@ function Reservations() {
           </tr>
         </thead>
         <tbody>
-          {reservations && reservations.map((reservation) => (
-            <tr key={reservation.id}>
-              <td className="border border-slate-600">{reservation.rental_date}</td>
-              <td className="border border-slate-600">{reservation.date_return}</td>
-              <td className="border border-slate-600">{reservation.destination}</td>
-              <td className="border border-slate-600">{reservation.car_id.name}</td>
+          {reservations && Array.isArray(reservations) ? (
+            reservations.map((reservation) => (
+              <tr key={reservation.id}>
+                <td className="border border-slate-600">{reservation.rental_date}</td>
+                <td className="border border-slate-600">{reservation.date_return}</td>
+                <td className="border border-slate-600">{reservation.destination}</td>
+                <td className="border border-slate-600">
+                  {cars.find((car) => car.id === reservation.car_id)?.name}
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="4" className="border border-slate-600 text-center">No reservations available</td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </section>

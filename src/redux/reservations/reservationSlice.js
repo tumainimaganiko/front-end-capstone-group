@@ -41,16 +41,16 @@ const reservationSlice = createSlice({
         isLoading: true,
       }))
 
+      .addCase(fetchReservations.rejected, (state, action) => ({
+        ...state,
+        error: action.error,
+        isLoading: false,
+      }))
+
       .addCase(fetchReservations.fulfilled, (state, action) => ({
         ...state,
         reservations: action.payload,
         isLoading: false,
-      }))
-
-      .addCase(fetchReservations.rejected, (state, action) => ({
-        ...state,
-        error: action.error,
-        isLoading: true,
       }))
 
       .addCase(createReservation.pending, (state) => ({
