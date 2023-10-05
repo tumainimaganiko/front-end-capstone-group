@@ -1,16 +1,16 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState } from 'react';
 import {
   BiLogoTwitter,
   BiLogoFacebook,
   BiLogoPinterestAlt,
   BiLogoInstagram,
-} from "react-icons/bi";
-import { HiXMark } from "react-icons/hi2";
-import { HiMenuAlt4 } from "react-icons/hi";
-import { TfiGoogle } from "react-icons/tfi";
-import { NavLink } from "react-router-dom";
-import logo from "../assets/images/logo-capstone.svg";
-import useClickOutside from "../hooks/useClickOutside";
+} from 'react-icons/bi';
+import { HiXMark } from 'react-icons/hi2';
+import { HiMenuAlt4 } from 'react-icons/hi';
+import { TfiGoogle } from 'react-icons/tfi';
+import { NavLink } from 'react-router-dom';
+import logo from '../assets/images/logo-capstone.svg';
+import useClickOutside from '../hooks/useClickOutside';
 
 function NavigationPanel() {
   const [menu, setMenu] = useState(false);
@@ -87,9 +87,6 @@ function NavigationPanel() {
                   ADD CAR
                 </NavLink>
               </li>
-              {/* <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/reservations">RESERVATION</NavLink></li>
-            <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/my-reservations">MY RESERVATIONS</NavLink></li>
-            <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/AddCar">ADD CAR</NavLink></li> */}
               <li className="">
                 <NavLink
                   onClick={removeNavPanel}
