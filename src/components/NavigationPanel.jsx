@@ -37,9 +37,6 @@ function NavigationPanel() {
             <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/reservations">RESERVATION</NavLink></li>
             <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/my-reservations">MY RESERVATIONS</NavLink></li>
             <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/AddCar">ADD CAR</NavLink></li>
-            <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/reservations">RESERVATION</NavLink></li>
-            <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/my-reservations">MY RESERVATIONS</NavLink></li>
-            <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/AddCar">ADD CAR</NavLink></li>
             <li className=""><NavLink onClick={removeNavPanel} className="p-2 hover:bg-[#97BF11] hover:text-white font-[900] text-xs my-2 block" to="/DeleteCar">REMOVE CAR</NavLink></li>
           </ul>
 
