@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render a Navigation Panel 1`] = `
+<button
+  className="fixed z-50 text-white md:top-5 md:left-5"
+  onClick={[Function]}
+  type="button"
+>
+  <svg
+    aria-hidden="true"
+    className="text-[34px]"
+    fill="currentColor"
+    height="1em"
+    stroke="currentColor"
+    strokeWidth="0"
+    style={
+      Object {
+        "color": undefined,
+      }
+    }
+    viewBox="0 0 20 20"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      clipRule="evenodd"
+      d="M3 7a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 13a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+      fillRule="evenodd"
+    />
+  </svg>
+</button>
+`;
